@@ -5,10 +5,11 @@ import {
   ShieldCheck, 
   Sparkles, 
   Clock, 
-  ChevronRight,
-  Package,
-  Check
+  ChevronRight, 
+  Package, 
+  Check 
 } from 'lucide-react';
+import { HermesLogo } from '../common/HermesLogo';
 
 interface OnboardingScreenProps {
   onComplete: () => void;
@@ -71,13 +72,10 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
       {/* Soft Sky Ambient Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#D8EEE2] via-[#EAF5EF] to-white pointer-events-none" />
 
-      {/* Top Header Bar (matches image 2: 9:41 on left, Skip on right) */}
+      {/* Top Header Bar */}
       <div className="relative z-30 flex items-center justify-between px-6 pt-4 pb-2">
-        <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full border border-emerald-900/10 shadow-xs">
-          <div className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-          <span className="text-[11px] font-black tracking-wide text-slate-800 uppercase font-sans">
-            HERMES <span className="text-emerald-700">BÉNIN</span>
-          </span>
+        <div className="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-2xl shadow-xs border border-emerald-900/10">
+          <HermesLogo size="sm" showSubtitle={false} />
         </div>
 
         <button

@@ -19,6 +19,7 @@ import {
   Info,
   X
 } from 'lucide-react';
+import { HermesLogo } from '../common/HermesLogo';
 
 export const HomeScreen: React.FC = () => {
   const { setActiveTab, openTracking, activeShipment, shipments, openOnboarding } = useMobileApp();
@@ -42,16 +43,13 @@ export const HomeScreen: React.FC = () => {
           <Menu size={18} className="stroke-[2.5]" />
         </button>
 
-        {/* Brand Pill Badge */}
+        {/* Brand Logo Card (exact style of user reference) */}
         <div 
           onClick={openOnboarding}
-          className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-300 shadow-xs cursor-pointer select-none group"
+          className="bg-white/95 px-3 py-1.5 rounded-2xl shadow-xs border border-slate-100 hover:border-emerald-200 transition-all cursor-pointer select-none group"
           title="Voir l'onboarding de présentation"
         >
-          <div className="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] font-black">
-            H
-          </div>
-          <span className="font-black text-xs tracking-tight text-emerald-950">HERMES</span>
+          <HermesLogo size="sm" showSubtitle={false} />
         </div>
 
         {/* Right Circular Avatar: Mon Profil */}

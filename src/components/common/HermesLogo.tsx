@@ -4,6 +4,7 @@ interface HermesLogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   variant?: 'dark' | 'light' | 'mono';
   showSubtitle?: boolean;
+  withCard?: boolean;
   className?: string;
 }
 
@@ -11,92 +12,124 @@ export const HermesLogo: React.FC<HermesLogoProps> = ({
   size = 'md',
   variant = 'dark',
   showSubtitle = true,
+  withCard = false,
   className = '',
 }) => {
   // Dimensions mapping
   const iconSizes = {
-    sm: 32,
+    sm: 30,
     md: 40,
     lg: 52,
-    xl: 68,
+    xl: 66,
   };
 
-  const textSizes = {
+  const titleSizes = {
     sm: 'text-base',
     md: 'text-xl',
     lg: 'text-2xl',
     xl: 'text-3xl',
   };
 
+  const subtitleSizes = {
+    sm: 'text-[9px]',
+    md: 'text-[11px]',
+    lg: 'text-xs',
+    xl: 'text-sm',
+  };
+
   const s = iconSizes[size];
 
-  return (
+  const content = (
     <div className={`inline-flex items-center gap-2.5 select-none ${className}`}>
-      {/* Dynamic Geometric Hermes Winged Emblem */}
+      {/* Winged Hermes Emblem matching user reference: horizontal wing slats on left + forward soaring silhouette on right */}
       <div 
-        className="relative flex items-center justify-center shrink-0 rounded-2xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/25 transition-transform duration-300 hover:scale-105"
-        style={{ width: s, height: s }}
+        className="relative flex items-center justify-center shrink-0 transition-transform duration-300 hover:scale-105"
+        style={{ width: s, height: (s * 32) / 44 }}
       >
         <svg 
-          viewBox="0 0 48 48" 
+          viewBox="0 0 64 48" 
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
-          className="w-3/4 h-3/4"
+          className="w-full h-full drop-shadow-xs"
         >
-          {/* Subtle background glow circle */}
-          <circle cx="24" cy="24" r="20" fill="#FFFFFF" fillOpacity="0.18" />
+          <defs>
+            <linearGradient id="hermesWingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#F59E0B" />
+              <stop offset="100%" stopColor="#EA580C" />
+            </linearGradient>
+          </defs>
 
-          {/* Winged Hermes stylized 'H' and parcel box */}
-          {/* Left vertical pillar */}
+          {/* Left Wing Slats (3 horizontal aerodynamic speed feathers) */}
+          {/* Top feather */}
           <path 
-            d="M12 11V37C12 38.1046 12.8954 39 14 39H16C17.1046 39 18 38.1046 18 37V11C18 9.89543 17.1046 9 16 9H14C12.8954 9 12 9.89543 12 11Z" 
-            fill="#FFFFFF" 
+            d="M4 14C4 11.7909 5.79086 10 8 10H28L24 16H8C5.79086 16 4 14.2091 4 14Z" 
+            fill="url(#hermesWingGrad)" 
+          />
+          {/* Middle feather */}
+          <path 
+            d="M10 20C10 17.7909 11.7909 16 14 16H30L26 22H14C11.7909 22 10 20.2091 10 20Z" 
+            fill="url(#hermesWingGrad)" 
+          />
+          {/* Bottom feather */}
+          <path 
+            d="M16 26C16 23.7909 17.7909 22 20 22H32L28 28H20C17.7909 28 16 26.2091 16 26Z" 
+            fill="url(#hermesWingGrad)" 
           />
 
-          {/* Right vertical pillar */}
+          {/* Dynamic Forward-Soaring Hermes Figure Silhouette (Right side) */}
+          {/* Head & upper helmet wing */}
           <path 
-            d="M30 11V37C30 38.1046 30.8954 39 32 39H34C35.1046 39 36 38.1046 36 37V11C36 9.89543 35.1046 9 34 9H32C30.8954 9 30 9.89543 30 11Z" 
-            fill="#FFFFFF" 
+            d="M32 10C34.5 7.5 38 6 42 7C43.5 10 42 13 40 15L35 18L32 10Z" 
+            fill="url(#hermesWingGrad)" 
           />
-
-          {/* Dynamic forward bridge (represents speed, connection, route) */}
+          {/* Forward leaning aerodynamic torso and wing body */}
           <path 
-            d="M16 21H32V27H16V21Z" 
-            fill="#A7F3D0" 
+            d="M26 14L38 12C41.5 14 43 17 41 21L36 29L32 25L28 34L25 32L29 24L25 21L26 14Z" 
+            fill="url(#hermesWingGrad)" 
           />
-
-          {/* Upper winged aerodynamic chevron (Hermes caduceus wing) */}
+          {/* Forward speed trail / dynamic lower foot */}
           <path 
-            d="M18 15L24 9L30 15L24 18L18 15Z" 
-            fill="#FFFFFF" 
+            d="M34 26L38 31L32 40L29 38L33 30L34 26Z" 
+            fill="url(#hermesWingGrad)" 
           />
-
-          {/* Central energetic dot / package pin */}
-          <circle cx="24" cy="24" r="2.5" fill="#047857" />
         </svg>
       </div>
 
-      {/* Typography */}
-      <div className="flex flex-col leading-none">
-        <div className="flex items-center gap-1.5">
+      {/* Typography: HERMES Bold Italic + Slogan 'Votre colis, notre mission.' */}
+      <div className="flex flex-col leading-tight">
+        <div className="flex items-baseline gap-1.5">
           <span 
-            className={`font-black tracking-tight font-sans ${textSizes[size]} ${
+            className={`font-black italic tracking-wide font-sans ${titleSizes[size]} ${
               variant === 'light' ? 'text-white' : 'text-slate-900'
             }`}
           >
             HERMES
           </span>
-          <span className="text-[9px] font-black tracking-wider uppercase px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200">
+          <span className="text-[9px] font-black tracking-wider uppercase px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
             BÉNIN
           </span>
         </div>
 
         {showSubtitle && (
-          <p className="text-[10px] text-slate-400 font-medium tracking-wide mt-0.5">
-            by <strong className={variant === 'light' ? 'text-slate-200' : 'text-slate-700'}>Strategy ARENA</strong>
+          <p 
+            className={`font-semibold tracking-tight ${subtitleSizes[size]} ${
+              variant === 'light' ? 'text-slate-300' : 'text-slate-500'
+            }`}
+          >
+            Votre colis, notre mission.
           </p>
         )}
       </div>
     </div>
   );
+
+  if (withCard) {
+    return (
+      <div className="inline-flex items-center bg-white px-4 py-2.5 rounded-2xl shadow-sm border border-slate-100">
+        {content}
+      </div>
+    );
+  }
+
+  return content;
 };

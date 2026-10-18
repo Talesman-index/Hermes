@@ -16,12 +16,13 @@ import {
   ExternalLink, 
   Sliders, 
   FileText, 
-  LogOut,
-  X,
-  Check,
-  Building2,
-  Package
+  LogOut, 
+  X, 
+  Check, 
+  Building2, 
+  Package 
 } from 'lucide-react';
+import { HermesLogo } from '../common/HermesLogo';
 
 export const ProfileScreen: React.FC = () => {
   const { 
@@ -272,13 +273,11 @@ export const ProfileScreen: React.FC = () => {
         </button>
       </div>
 
-      {/* Footer Branding */}
-      <div className="text-center pt-2 space-y-1">
-        <p className="text-xs font-black text-slate-700 tracking-tight font-sans">
-          HERMES <span className="text-emerald-700">BÉNIN</span>
-        </p>
+      {/* Footer Branding with Winged Logo & Slogan */}
+      <div className="flex flex-col items-center justify-center pt-2 space-y-1.5 text-center">
+        <HermesLogo size="sm" showSubtitle={true} />
         <p className="text-[10px] text-slate-400">
-          Développé par <strong>Strategy ARENA</strong> · Version Démo MVP 1.0
+          by <strong>Strategy ARENA</strong> · Version MVP Démo 1.0
         </p>
       </div>
 

@@ -9,6 +9,7 @@ import { TrackingScreen } from './components/mobile/TrackingScreen';
 import { DeliveredScreen } from './components/mobile/DeliveredScreen';
 import { MyShipmentsScreen } from './components/mobile/MyShipmentsScreen';
 import { ProfileScreen } from './components/mobile/ProfileScreen';
+import { Preloader } from './components/common/Preloader';
 import { CheckCircle2 } from 'lucide-react';
 
 const MobileMain: React.FC = () => {
@@ -16,6 +17,9 @@ const MobileMain: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F0F4F2] flex flex-col font-sans selection:bg-emerald-600 selection:text-white">
+      {/* Stylish Soft Preloader */}
+      <Preloader />
+
       {/* Main Centered Smartphone Experience */}
       <MobileFrame>
         {showOnboarding ? (
