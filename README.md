@@ -1,19 +1,21 @@
-# HERMES by Strategy ARENA — MVP de Démonstration
+# HERMES by Strategy ARENA — Application Mobile-First MVP
 
 > **Solution de coordination logistique porte-à-porte pour le transport interurbain au Bénin.**  
-> **Corridor pilote :** Cotonou ➔ Parakou (420 km)  
-> **Version :** 1.0 (Prototype interactif pré-pilote)
+> **Corridor pilote :** Cotonou ➔ Parakou (RNIE 2 · 420 km)  
+> **Version :** 1.0 (Prototype mobile-first interactif)
+
+![HERMES Onboarding Showcase](./public/images/onboarding-showcase.jpg)
 
 ---
 
 ## 1. À propos de HERMES
 
-HERMES est une solution logistique conçue par **Strategy ARENA** pour simplifier l'envoi de colis entre les villes du Bénin sans que l'expéditeur ni le destinataire n'aient à se déplacer en gare routière.
+HERMES est une solution logistique innovante conçue par **Strategy ARENA** pour simplifier l'envoi de colis entre les villes du Bénin sans que l'expéditeur ni le destinataire n'aient à se déplacer en agence ou gare routière.
 
-### L'expérience porte-à-porte en 3 opérations :
-1. **First Mile (Collecte) :** Un coursier partenaire Hermes collecte le colis chez l'expéditeur à Cotonou et le dépose au guichet de la compagnie de car.
-2. **Transport Interurbain :** Une compagnie partenaire assure le trajet Cotonou ➔ Parakou en autocar sécurisé via la RNIE 2.
-3. **Last Mile (Livraison) :** Un second coursier Hermes retire le colis à l'agence d'arrivée et le livre directement au destinataire contre validation d'un code secret.
+### L'expérience logistique en 3 temps :
+1. **01 · Premier Kilomètre (Collecte) :** Un coursier partenaire Hermes collecte le colis à domicile ou au commerce à Cotonou et le dépose à l'agence d'autocar.
+2. **02 · Transport Interurbain (420 km) :** Une compagnie partenaire assure le trajet Cotonou ➔ Parakou en autocar sécurisé via la RNIE 2 avec heure d'arrivée estimée.
+3. **03 · Dernier Kilomètre (Livraison) :** Un second coursier Hermes retire le colis à l'agence de Parakou et le livre directement au destinataire contre validation obligatoire d'un **code secret PIN à 6 chiffres**.
 
 > **Principe clé :** HERMES ne remplace pas les compagnies de transport. La plateforme valorise leur réseau et leur apporte des flux pré-enregistrés, étiquetés et tracés.
 
