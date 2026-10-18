@@ -35,55 +35,56 @@ export const HomeScreen: React.FC = () => {
       <div className="flex items-center justify-between pt-1">
         {/* Hamburger Menu button */}
         <button
-          onClick={openOnboarding}
+          onClick={() => setActiveTab('profile')}
           className="w-10 h-10 rounded-2xl bg-white border border-slate-200/90 shadow-xs flex items-center justify-center text-slate-800 hover:bg-slate-50 cursor-pointer active:scale-95 transition-all"
-          title="Menu & Guide Onboarding"
+          title="Menu & Profil"
         >
           <Menu size={18} className="stroke-[2.5]" />
         </button>
 
-        {/* Brand Pill Badge (exact GoDash style) */}
+        {/* Brand Pill Badge */}
         <div 
           onClick={openOnboarding}
-          className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D4F63D] border border-black/10 shadow-xs cursor-pointer select-none group"
+          className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-300 shadow-xs cursor-pointer select-none group"
+          title="Voir l'onboarding de présentation"
         >
-          <div className="w-4 h-4 rounded-full bg-[#0B0F19] text-[#D4F63D] flex items-center justify-center text-[10px] font-black">
+          <div className="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[10px] font-black">
             H
           </div>
-          <span className="font-black text-xs tracking-tight text-[#0B0F19]">HERMES</span>
+          <span className="font-black text-xs tracking-tight text-emerald-950">HERMES</span>
         </div>
 
-        {/* Right Circular Avatar: Smiling Black Courier */}
+        {/* Right Circular Avatar: Mon Profil */}
         <div 
-          onClick={openOnboarding}
-          className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#D4F63D] shadow-sm bg-slate-800 cursor-pointer hover:scale-105 transition-transform"
-          title="Profil coursier partenaire"
+          onClick={() => setActiveTab('profile')}
+          className="w-10 h-10 rounded-full overflow-hidden border-2 border-emerald-500 shadow-sm bg-slate-800 cursor-pointer hover:scale-105 transition-transform"
+          title="Mon profil utilisateur"
         >
           <img 
-            src="/images/black-courier.jpg" 
-            alt="Profil coursier" 
+            src="/images/black-customer.jpg" 
+            alt="Mon profil" 
             className="w-full h-full object-cover object-top"
           />
         </div>
       </div>
 
-      {/* Hero Current Delivery Card (Exact GoDash Lime Curved Card) */}
-      <div className="bg-[#D4F63D] text-[#0B0F19] rounded-3xl p-5 shadow-lg shadow-[#D4F63D]/20 border border-black/10 space-y-4 relative overflow-hidden">
+      {/* Hero Current Delivery Card (Emerald Curved Card matching illustrations) */}
+      <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 text-white rounded-3xl p-5 shadow-xl shadow-emerald-600/25 border border-emerald-500/30 space-y-4 relative overflow-hidden">
         {/* Top Meta & Circular Arrow Button */}
         <div className="flex items-start justify-between">
           <div>
-            <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-800">
-              <span className="w-2 h-2 rounded-full bg-[#0B0F19] animate-pulse" />
+            <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-100">
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
               <span>Livraison en cours · {currentStage?.title}</span>
             </div>
-            <h2 className="text-2xl font-mono font-black text-[#0B0F19] tracking-tight mt-0.5">
+            <h2 className="text-2xl font-mono font-black text-white tracking-tight mt-0.5">
               {activeShipment.reference}
             </h2>
           </div>
 
           <button
             onClick={() => openTracking(activeShipment.id)}
-            className="w-10 h-10 rounded-full bg-white text-[#0B0F19] flex items-center justify-center shadow-md hover:scale-105 transition-transform cursor-pointer active:scale-95"
+            className="w-10 h-10 rounded-full bg-white text-emerald-800 flex items-center justify-center shadow-md hover:scale-105 transition-transform cursor-pointer active:scale-95"
             title="Consulter le suivi détaillé"
           >
             <ArrowUpRight size={18} className="stroke-[3]" />
@@ -91,41 +92,41 @@ export const HomeScreen: React.FC = () => {
         </div>
 
         {/* Dates & ETA */}
-        <div className="flex items-center justify-between text-xs font-bold text-slate-800">
+        <div className="flex items-center justify-between text-xs font-bold text-emerald-100">
           <span>{activeShipment.createdAt.split('·')[0]}</span>
-          <span className="text-slate-900 font-extrabold font-mono">Délai : ~8h de trajet</span>
+          <span className="text-white font-extrabold font-mono bg-emerald-800/60 px-2 py-0.5 rounded-full border border-emerald-400/30">Délai : ~8h de trajet</span>
         </div>
 
-        {/* GoDash Dotted Progress Track with Animated Vehicle */}
+        {/* Dotted Progress Track with Animated Vehicle */}
         <div className="relative py-2">
           {/* Dotted Track Line */}
-          <div className="absolute top-1/2 left-3 right-3 -translate-y-1/2 border-b-2 border-dashed border-[#0B0F19]/40 z-0" />
+          <div className="absolute top-1/2 left-3 right-3 -translate-y-1/2 border-b-2 border-dashed border-white/40 z-0" />
 
           {/* Node 1 : Collecte Cotonou */}
           <div className="relative z-10 flex items-center justify-between">
             <div className="flex flex-col items-center">
-              <div className="w-5 h-5 rounded-full bg-[#0B0F19] text-[#D4F63D] flex items-center justify-center text-[10px] font-black shadow-xs">
+              <div className="w-5 h-5 rounded-full bg-white text-emerald-700 flex items-center justify-center text-[10px] font-black shadow-xs">
                 ✓
               </div>
-              <span className="text-[10px] font-extrabold mt-1 text-slate-900">Cotonou</span>
+              <span className="text-[10px] font-extrabold mt-1 text-emerald-50">Cotonou</span>
             </div>
 
             {/* Node 2 : Autocar RNIE 2 */}
             <div className="flex flex-col items-center">
               <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black shadow-xs ${
-                activeShipment.currentStep >= 5 ? 'bg-[#0B0F19] text-[#D4F63D]' : 'bg-white text-slate-400'
+                activeShipment.currentStep >= 5 ? 'bg-white text-emerald-700' : 'bg-emerald-800/80 text-emerald-200'
               }`}>
                 {activeShipment.currentStep >= 5 ? '✓' : '2'}
               </div>
-              <span className="text-[10px] font-bold mt-1 text-slate-800">Bohicon</span>
+              <span className="text-[10px] font-bold mt-1 text-emerald-100">Bohicon</span>
             </div>
 
             {/* Vehicle Icon placed according to current step */}
             <div className="flex flex-col items-center animate-bounce">
-              <div className="w-7 h-7 rounded-xl bg-[#0B0F19] text-white flex items-center justify-center shadow-md">
-                <Bus size={14} className="text-[#D4F63D]" />
+              <div className="w-7 h-7 rounded-xl bg-white text-emerald-700 flex items-center justify-center shadow-md">
+                <Bus size={14} className="text-emerald-700" />
               </div>
-              <span className="text-[9px] font-black mt-0.5 text-[#0B0F19] uppercase tracking-wider">
+              <span className="text-[9px] font-black mt-0.5 text-white uppercase tracking-wider drop-shadow-xs">
                 En route
               </span>
             </div>
@@ -133,19 +134,19 @@ export const HomeScreen: React.FC = () => {
             {/* Node 3 : Arrivée Parakou */}
             <div className="flex flex-col items-center">
               <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black shadow-xs ${
-                isDelivered ? 'bg-[#0B0F19] text-[#D4F63D]' : 'bg-white text-slate-500'
+                isDelivered ? 'bg-white text-emerald-700' : 'bg-emerald-800/80 text-emerald-200'
               }`}>
                 {isDelivered ? '✓' : '3'}
               </div>
-              <span className="text-[10px] font-extrabold mt-1 text-slate-900">Parakou</span>
+              <span className="text-[10px] font-extrabold mt-1 text-emerald-50">Parakou</span>
             </div>
           </div>
         </div>
 
         {/* Bottom Banner */}
-        <div className="pt-1 flex items-center justify-between text-[11px] text-slate-800 font-medium border-t border-black/10">
+        <div className="pt-1 flex items-center justify-between text-[11px] text-emerald-100 font-medium border-t border-emerald-500/40">
           <span className="truncate max-w-[210px]">{activeShipment.description}</span>
-          <span className="font-mono font-bold text-[#0B0F19]">Étape {activeShipment.currentStep}/9</span>
+          <span className="font-mono font-bold text-white bg-emerald-800/50 px-2 py-0.5 rounded-full">Étape {activeShipment.currentStep}/9</span>
         </div>
       </div>
 
@@ -154,9 +155,9 @@ export const HomeScreen: React.FC = () => {
         {/* 1. Create Tile */}
         <button
           onClick={() => setActiveTab('create')}
-          className="bg-white p-3.5 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-[#D4F63D] transition-all cursor-pointer flex flex-col items-center text-center justify-center space-y-2 group active:scale-95"
+          className="bg-white p-3.5 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all cursor-pointer flex flex-col items-center text-center justify-center space-y-2 group active:scale-95"
         >
-          <div className="w-12 h-12 rounded-2xl bg-[#0B0F19] text-[#D4F63D] flex items-center justify-center font-bold shadow-sm group-hover:scale-105 transition-transform">
+          <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-bold shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform">
             <Package size={22} className="stroke-[2.5]" />
           </div>
           <span className="text-xs font-black text-slate-900">Créer</span>
@@ -165,9 +166,9 @@ export const HomeScreen: React.FC = () => {
         {/* 2. Calculate Tile */}
         <button
           onClick={() => setCalcModal(true)}
-          className="bg-white p-3.5 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-[#D4F63D] transition-all cursor-pointer flex flex-col items-center text-center justify-center space-y-2 group active:scale-95"
+          className="bg-white p-3.5 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all cursor-pointer flex flex-col items-center text-center justify-center space-y-2 group active:scale-95"
         >
-          <div className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-800 flex items-center justify-center font-bold shadow-sm group-hover:scale-105 transition-transform">
+          <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
             <Calculator size={22} className="stroke-[2.2]" />
           </div>
           <span className="text-xs font-black text-slate-900">Calculer</span>
@@ -176,16 +177,16 @@ export const HomeScreen: React.FC = () => {
         {/* 3. Receipts / Tarifs Tile */}
         <button
           onClick={() => setTarifsModal(true)}
-          className="bg-white p-3.5 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-[#D4F63D] transition-all cursor-pointer flex flex-col items-center text-center justify-center space-y-2 group active:scale-95"
+          className="bg-white p-3.5 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-emerald-500 transition-all cursor-pointer flex flex-col items-center text-center justify-center space-y-2 group active:scale-95"
         >
-          <div className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-800 flex items-center justify-center font-bold shadow-sm group-hover:scale-105 transition-transform">
+          <div className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-800 flex items-center justify-center font-bold shadow-xs group-hover:scale-105 transition-transform">
             <FileText size={22} className="stroke-[2.2]" />
           </div>
           <span className="text-xs font-black text-slate-900">Tarifs</span>
         </button>
       </div>
 
-      {/* Active Shipments Section (Exact GoDash 2-column or list view) */}
+      {/* Active Shipments Section */}
       <div className="space-y-2.5 pt-1">
         <div className="flex items-center justify-between px-1">
           <h3 className="text-xs font-black uppercase tracking-wider text-slate-700">
@@ -193,7 +194,7 @@ export const HomeScreen: React.FC = () => {
           </h3>
           <button
             onClick={() => setActiveTab('shipments')}
-            className="text-[11px] font-black text-slate-500 hover:text-slate-900 cursor-pointer"
+            className="text-[11px] font-black text-emerald-700 hover:text-emerald-900 cursor-pointer"
           >
             Voir tout
           </button>
@@ -206,7 +207,7 @@ export const HomeScreen: React.FC = () => {
               <div
                 key={shipment.id}
                 onClick={() => openTracking(shipment.id)}
-                className="bg-white p-3.5 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-slate-300 transition-all cursor-pointer flex flex-col justify-between space-y-2 group active:scale-98"
+                className="bg-white p-3.5 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md hover:border-emerald-400/80 transition-all cursor-pointer flex flex-col justify-between space-y-2 group active:scale-98"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1">
@@ -218,7 +219,7 @@ export const HomeScreen: React.FC = () => {
                     className={`text-[9px] font-black px-2 py-0.5 rounded-full ${
                       isShipmentDelivered
                         ? 'bg-emerald-100 text-emerald-800'
-                        : 'bg-[#D4F63D] text-[#0B0F19]'
+                        : 'bg-emerald-600 text-white'
                     }`}
                   >
                     {isShipmentDelivered ? 'Livré' : 'En transit'}
@@ -252,7 +253,7 @@ export const HomeScreen: React.FC = () => {
           </h3>
           <button
             onClick={openOnboarding}
-            className="text-[11px] font-black text-[#0B0F19] hover:underline cursor-pointer"
+            className="text-[11px] font-black text-emerald-700 hover:underline cursor-pointer"
           >
             Comment ça marche ?
           </button>
@@ -266,11 +267,11 @@ export const HomeScreen: React.FC = () => {
           >
             <div className="h-28 overflow-hidden bg-slate-900 relative">
               <img 
-                src="/images/black-courier.jpg" 
+                src="/images/onboarding-collecte.jpg" 
                 alt="Coursier Hermes" 
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
               />
-              <span className="absolute top-2 left-2 bg-[#0B0F19]/90 text-[#D4F63D] text-[9px] font-black px-2 py-0.5 rounded-full">
+              <span className="absolute top-2 left-2 bg-emerald-900/90 text-white text-[9px] font-black px-2 py-0.5 rounded-full border border-emerald-500/30">
                 1er Km
               </span>
             </div>
@@ -287,11 +288,11 @@ export const HomeScreen: React.FC = () => {
           >
             <div className="h-28 overflow-hidden bg-slate-900 relative">
               <img 
-                src="/images/black-customer.jpg" 
+                src="/images/onboarding-delivery.jpg" 
                 alt="Client destinataire" 
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
               />
-              <span className="absolute top-2 left-2 bg-[#D4F63D] text-[#0B0F19] text-[9px] font-black px-2 py-0.5 rounded-full">
+              <span className="absolute top-2 left-2 bg-emerald-600 text-white text-[9px] font-black px-2 py-0.5 rounded-full shadow-xs">
                 Dernier Km
               </span>
             </div>
@@ -309,31 +310,31 @@ export const HomeScreen: React.FC = () => {
           <div className="bg-white rounded-3xl max-w-sm w-full p-6 space-y-4 shadow-2xl animate-in slide-in-from-bottom-5">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-[#0B0F19] text-[#D4F63D] flex items-center justify-center font-bold">
+                <div className="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold">
                   <Calculator size={16} />
                 </div>
                 <h3 className="font-black text-slate-900 text-sm">Calculateur de corridor</h3>
               </div>
-              <button onClick={() => setCalcModal(false)} className="text-slate-400 hover:text-slate-700">
+              <button onClick={() => setCalcModal(false)} className="text-slate-400 hover:text-slate-700 cursor-pointer">
                 <X size={18} />
               </button>
             </div>
 
             <div className="space-y-2.5 text-xs">
-              <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 space-y-1">
-                <span className="text-[10px] text-slate-400 font-bold uppercase">Trajet direct</span>
+              <div className="p-3 rounded-2xl bg-emerald-50/60 border border-emerald-100 space-y-1">
+                <span className="text-[10px] text-emerald-700 font-bold uppercase">Trajet direct</span>
                 <p className="font-extrabold text-slate-900 text-sm">Cotonou ➔ Parakou</p>
                 <p className="text-slate-500">Route Nationale Inter-États RNIE 2</p>
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="p-3 rounded-2xl bg-[#D4F63D]/20 border border-[#D4F63D]/40 text-center">
-                  <p className="text-[10px] text-slate-600 font-bold uppercase">Distance</p>
-                  <p className="text-lg font-black text-slate-900 font-mono">420 km</p>
+                <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 text-center">
+                  <p className="text-[10px] text-emerald-800 font-bold uppercase">Distance</p>
+                  <p className="text-lg font-black text-emerald-950 font-mono">420 km</p>
                 </div>
-                <div className="p-3 rounded-2xl bg-[#D4F63D]/20 border border-[#D4F63D]/40 text-center">
-                  <p className="text-[10px] text-slate-600 font-bold uppercase">Délai estimé</p>
-                  <p className="text-lg font-black text-slate-900 font-mono">~ 8 heures</p>
+                <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 text-center">
+                  <p className="text-[10px] text-emerald-800 font-bold uppercase">Délai estimé</p>
+                  <p className="text-lg font-black text-emerald-950 font-mono">~ 8 heures</p>
                 </div>
               </div>
 
@@ -349,7 +350,7 @@ export const HomeScreen: React.FC = () => {
                 setCalcModal(false);
                 setActiveTab('create');
               }}
-              className="w-full py-3.5 rounded-2xl bg-[#0B0F19] text-[#D4F63D] font-black text-xs cursor-pointer shadow-md"
+              className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs cursor-pointer shadow-md shadow-emerald-600/30 active:scale-[0.98] transition-all"
             >
               Créer une expédition sur ce trajet
             </button>
@@ -363,12 +364,12 @@ export const HomeScreen: React.FC = () => {
           <div className="bg-white rounded-3xl max-w-sm w-full p-6 space-y-4 shadow-2xl animate-in slide-in-from-bottom-5">
             <div className="flex items-center justify-between pb-2 border-b border-slate-100">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-[#D4F63D] text-[#0B0F19] flex items-center justify-center font-bold">
+                <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
                   <FileText size={16} />
                 </div>
                 <h3 className="font-black text-slate-900 text-sm">Tarification & Pilote</h3>
               </div>
-              <button onClick={() => setTarifsModal(false)} className="text-slate-400 hover:text-slate-700">
+              <button onClick={() => setTarifsModal(false)} className="text-slate-400 hover:text-slate-700 cursor-pointer">
                 <X size={18} />
               </button>
             </div>

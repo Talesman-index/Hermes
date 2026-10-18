@@ -6,12 +6,12 @@ export const MobileFrame: React.FC<{ children: React.ReactNode }> = ({ children 
   const { deviceFrame } = useMobileApp();
 
   return (
-    <div className="min-h-screen bg-[#F0F2F5] flex flex-col items-center justify-start py-0 sm:py-6 selection:bg-[#D4F63D] selection:text-[#0B0F19]">
+    <div className="min-h-screen bg-[#F0F4F2] flex flex-col items-center justify-start py-0 sm:py-6 selection:bg-emerald-600 selection:text-white">
       {/* Smartphone Mockup Wrapper on Desktop / Tablet */}
       <div
         className={`w-full transition-all duration-300 ${
           deviceFrame
-            ? 'max-w-[420px] sm:my-3 sm:rounded-[44px] sm:border-[10px] sm:border-[#0B0F19] sm:shadow-2xl sm:shadow-slate-900/40 relative sm:overflow-hidden bg-[#F7F9F5]'
+            ? 'max-w-[420px] sm:my-3 sm:rounded-[44px] sm:border-[10px] sm:border-[#0B1F17] sm:shadow-2xl sm:shadow-emerald-950/30 relative sm:overflow-hidden bg-[#F7F9F5]'
             : 'max-w-md w-full bg-[#F7F9F5]'
         }`}
       >

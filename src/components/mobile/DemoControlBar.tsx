@@ -24,8 +24,8 @@ export const DemoControlBar: React.FC = () => {
       <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2.5">
         {/* Left: Demo badge & active shipment step */}
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#D4F63D]/15 text-[#D4F63D] border border-[#D4F63D]/30 font-bold text-[11px]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4F63D] animate-ping" />
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold text-[11px]">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
             DÉMO CLIENT HERMES
           </span>
 
@@ -33,7 +33,7 @@ export const DemoControlBar: React.FC = () => {
             <span className="font-mono text-xs font-bold text-white">{activeShipment.reference}</span>
             <span className="text-slate-500">·</span>
             <span className="text-slate-400">
-              Étape <strong className="text-[#D4F63D] font-mono">{activeShipment.currentStep}/9</strong> : {currentStage?.title}
+              Étape <strong className="text-emerald-400 font-mono">{activeShipment.currentStep}/9</strong> : {currentStage?.title}
             </span>
           </div>
         </div>
@@ -48,12 +48,12 @@ export const DemoControlBar: React.FC = () => {
                   openTracking(activeShipment.id);
                 }
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#D4F63D] hover:bg-[#c2e62a] text-[#0B0F19] font-black text-xs shadow-md shadow-[#D4F63D]/25 transition-all active:scale-95 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs shadow-md shadow-emerald-600/30 transition-all active:scale-95 cursor-pointer"
               title="Passer à l'étape suivante du parcours logistique"
             >
               <Play size={11} className="fill-current" />
               <span>Étape suivante ({activeShipment.currentStep + 1}/9)</span>
-              {nextStage && <span className="hidden md:inline font-normal text-slate-900/80">· {nextStage.title}</span>}
+              {nextStage && <span className="hidden md:inline font-normal text-white/80">· {nextStage.title}</span>}
               <ChevronRight size={13} className="stroke-[3]" />
             </button>
           ) : (
@@ -74,10 +74,10 @@ export const DemoControlBar: React.FC = () => {
 
           <button
             onClick={openOnboarding}
-            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-[#D4F63D] hover:text-white transition-colors cursor-pointer text-xs font-bold"
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-emerald-400 hover:text-white transition-colors cursor-pointer text-xs font-bold"
             title="Afficher l'onboarding de présentation 3D"
           >
-            <Sparkles size={12} className="text-[#D4F63D]" />
+            <Sparkles size={12} className="text-emerald-400" />
             <span className="hidden sm:inline">Onboarding</span>
           </button>
 

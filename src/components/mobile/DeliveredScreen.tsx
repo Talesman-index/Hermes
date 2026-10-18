@@ -21,14 +21,14 @@ export const DeliveredScreen: React.FC = () => {
   return (
     <div className="space-y-6 pb-28 text-center animate-in zoom-in-95 duration-300">
       {/* Success Badge & Illustration */}
-      <div className="relative mx-auto w-32 h-32 rounded-3xl overflow-hidden border-4 border-[#D4F63D] shadow-2xl bg-slate-900 mt-2">
+      <div className="relative mx-auto w-32 h-32 rounded-3xl overflow-hidden border-4 border-emerald-500 shadow-2xl bg-slate-900 mt-2">
         <img 
-          src="/images/black-customer.jpg" 
+          src="/images/onboarding-delivery.jpg" 
           alt="Livraison terminée avec succès" 
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F19]/80 via-transparent to-transparent flex items-end justify-center pb-2">
-          <span className="text-[10px] font-black uppercase text-[#D4F63D] bg-[#0B0F19] px-2 py-0.5 rounded-full border border-[#D4F63D]/40">
+        <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-transparent to-transparent flex items-end justify-center pb-2">
+          <span className="text-[10px] font-black uppercase text-white bg-emerald-600 px-2 py-0.5 rounded-full border border-emerald-400/50 shadow-sm">
             Livré 100%
           </span>
         </div>
@@ -119,7 +119,7 @@ export const DeliveredScreen: React.FC = () => {
       <div className="space-y-3 pt-2">
         <button
           onClick={() => setActiveTab('create')}
-          className="w-full py-4 px-6 rounded-2xl bg-[#D4F63D] hover:bg-[#c2e62a] text-[#0B0F19] font-black text-sm flex items-center justify-center gap-2 shadow-xl shadow-[#D4F63D]/25 cursor-pointer active:scale-95 transition-all"
+          className="w-full py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm flex items-center justify-center gap-2 shadow-xl shadow-emerald-600/30 cursor-pointer active:scale-95 transition-all"
         >
           <PlusCircle size={18} className="stroke-[2.5]" />
           <span>Nouvelle expédition</span>

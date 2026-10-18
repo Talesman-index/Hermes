@@ -4,7 +4,7 @@
 
 export type MobileShipmentStep = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
-export type MobileTab = 'home' | 'create' | 'shipments' | 'track' | 'delivered';
+export type MobileTab = 'home' | 'create' | 'shipments' | 'track' | 'delivered' | 'profile';
 
 export interface WorkflowStage {
   step: MobileShipmentStep;

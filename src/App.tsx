@@ -9,13 +9,14 @@ import { CreateShipmentScreen } from './components/mobile/CreateShipmentScreen';
 import { TrackingScreen } from './components/mobile/TrackingScreen';
 import { DeliveredScreen } from './components/mobile/DeliveredScreen';
 import { MyShipmentsScreen } from './components/mobile/MyShipmentsScreen';
+import { ProfileScreen } from './components/mobile/ProfileScreen';
 import { CheckCircle2 } from 'lucide-react';
 
 const MobileMain: React.FC = () => {
   const { activeTab, toastMessage, showOnboarding, closeOnboarding } = useMobileApp();
 
   return (
-    <div className="min-h-screen bg-[#F0F2F5] flex flex-col font-sans selection:bg-[#D4F63D] selection:text-[#0B0F19]">
+    <div className="min-h-screen bg-[#F0F4F2] flex flex-col font-sans selection:bg-emerald-600 selection:text-white">
       {/* Top Demo Bar for the Presenter */}
       <DemoControlBar />
 
@@ -30,8 +31,9 @@ const MobileMain: React.FC = () => {
             {activeTab === 'track' && <TrackingScreen />}
             {activeTab === 'delivered' && <DeliveredScreen />}
             {activeTab === 'shipments' && <MyShipmentsScreen />}
+            {activeTab === 'profile' && <ProfileScreen />}
 
-            {/* Fixed Bottom Navigation (Accueil, Expédier, Mes colis) */}
+            {/* Fixed Bottom Navigation (Accueil, Expédier, Mes colis, Profil) */}
             <MobileNavBar />
           </>
         )}
@@ -40,8 +42,8 @@ const MobileMain: React.FC = () => {
       {/* Toast Notification Alert */}
       {toastMessage && (
         <div className="fixed bottom-20 left-4 right-4 max-w-sm mx-auto z-50 animate-in slide-in-from-bottom-5 duration-200 pointer-events-none">
-          <div className="bg-[#0B0F19] text-white px-4 py-3 rounded-2xl shadow-2xl border border-slate-700/80 flex items-center gap-3 text-xs">
-            <div className="w-7 h-7 rounded-full bg-[#D4F63D] text-[#0B0F19] flex items-center justify-center shrink-0 font-bold">
+          <div className="bg-[#0B1F17] text-white px-4 py-3 rounded-2xl shadow-2xl border border-emerald-800/60 flex items-center gap-3 text-xs">
+            <div className="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center shrink-0 font-bold shadow-md">
               <CheckCircle2 size={16} className="stroke-[2.8]" />
             </div>
             <p className="font-bold text-slate-100 leading-snug">{toastMessage}</p>

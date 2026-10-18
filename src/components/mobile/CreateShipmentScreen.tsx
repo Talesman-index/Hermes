@@ -66,12 +66,12 @@ export const CreateShipmentScreen: React.FC = () => {
   if (createdShipmentId) {
     return (
       <div className="space-y-6 py-6 pb-24 text-center animate-in zoom-in-95 duration-300">
-        <div className="w-20 h-20 rounded-3xl bg-[#D4F63D] text-[#0B0F19] flex items-center justify-center mx-auto shadow-2xl shadow-[#D4F63D]/30">
+        <div className="w-20 h-20 rounded-3xl bg-emerald-600 text-white flex items-center justify-center mx-auto shadow-2xl shadow-emerald-600/30">
           <CheckCircle2 size={42} className="stroke-[2.8]" />
         </div>
 
         <div className="space-y-2">
-          <span className="text-[10px] font-black uppercase tracking-widest text-teal-800 bg-teal-100 px-3 py-1 rounded-full">
+          <span className="text-[10px] font-black uppercase tracking-widest text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">
             Expédition Enregistrée
           </span>
           <h2 className="text-2xl font-black text-slate-900">Demande confirmée avec succès !</h2>
@@ -81,14 +81,14 @@ export const CreateShipmentScreen: React.FC = () => {
         </div>
 
         {/* Tracking Number Card */}
-        <div className="bg-[#0B0F19] text-white p-5 rounded-3xl shadow-xl border border-slate-800 space-y-3 max-w-xs mx-auto">
-          <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Numéro de suivi</p>
-          <p className="text-2xl font-mono font-black text-[#D4F63D] tracking-wider select-all">
+        <div className="bg-[#0B1F17] text-white p-5 rounded-3xl shadow-xl border border-emerald-850/80 space-y-3 max-w-xs mx-auto">
+          <p className="text-[10px] uppercase font-bold tracking-wider text-emerald-300/80">Numéro de suivi</p>
+          <p className="text-2xl font-mono font-black text-emerald-400 tracking-wider select-all">
             {createdRef}
           </p>
-          <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
+          <div className="pt-2 border-t border-emerald-900/60 flex items-center justify-between text-[11px] text-slate-300">
             <span>Corridor : Cotonou ➔ Parakou</span>
-            <span className="text-[#D4F63D] font-bold">Étape 1/9</span>
+            <span className="text-emerald-400 font-bold">Étape 1/9</span>
           </div>
         </div>
 
@@ -96,7 +96,7 @@ export const CreateShipmentScreen: React.FC = () => {
         <div className="space-y-3 pt-2">
           <button
             onClick={() => openTracking(createdShipmentId)}
-            className="w-full py-4 px-6 rounded-2xl bg-[#D4F63D] hover:bg-[#c2e62a] text-[#0B0F19] font-black text-sm flex items-center justify-center gap-2 shadow-xl shadow-[#D4F63D]/25 cursor-pointer active:scale-95 transition-all"
+            className="w-full py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm flex items-center justify-center gap-2 shadow-xl shadow-emerald-600/30 cursor-pointer active:scale-95 transition-all"
           >
             <Compass size={18} className="stroke-[2.5]" />
             <span>Suivre mon colis en direct</span>
@@ -141,7 +141,7 @@ export const CreateShipmentScreen: React.FC = () => {
           <div
             key={i}
             className={`h-1.5 rounded-full transition-all duration-300 ${
-              step >= i ? 'bg-[#D4F63D]' : 'bg-slate-200'
+              step >= i ? 'bg-emerald-600' : 'bg-slate-200'
             }`}
           />
         ))}
@@ -180,7 +180,7 @@ export const CreateShipmentScreen: React.FC = () => {
                 value={originAddress}
                 onChange={(e) => setOriginAddress(e.target.value)}
                 placeholder="Ex: Rue 340, Haie Vive, Cotonou"
-                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
 
@@ -193,7 +193,7 @@ export const CreateShipmentScreen: React.FC = () => {
                 value={originNotes}
                 onChange={(e) => setOriginNotes(e.target.value)}
                 placeholder="Ex: Immeuble beige face pharmacie"
-                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
 
@@ -207,7 +207,7 @@ export const CreateShipmentScreen: React.FC = () => {
                 value={destinationAddress}
                 onChange={(e) => setDestinationAddress(e.target.value)}
                 placeholder="Ex: Quartier Banikanni, Parakou"
-                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
 
@@ -220,7 +220,7 @@ export const CreateShipmentScreen: React.FC = () => {
                 value={destinationNotes}
                 onChange={(e) => setDestinationNotes(e.target.value)}
                 placeholder="Ex: Portail vert près de la grande voie"
-                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
           </div>
@@ -234,7 +234,7 @@ export const CreateShipmentScreen: React.FC = () => {
               }
               setStep(2);
             }}
-            className="w-full py-3.5 rounded-2xl bg-[#0B0F19] hover:bg-slate-800 text-[#D4F63D] font-black text-xs flex items-center justify-center gap-2 cursor-pointer shadow-lg active:scale-98 transition-all"
+            className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-600/25 active:scale-98 transition-all"
           >
             <span>Continuer vers le Colis</span>
             <ChevronRight size={16} />
@@ -259,7 +259,7 @@ export const CreateShipmentScreen: React.FC = () => {
               <select
                 value={packageType}
                 onChange={(e) => setPackageType(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs font-bold text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs font-bold text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               >
                 <option value="Colis standard">Colis standard / Carton scellé</option>
                 <option value="Documents / Plis urgents">Documents confidentiels / Plis urgents</option>
@@ -278,7 +278,7 @@ export const CreateShipmentScreen: React.FC = () => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Ex: Échantillons commerciaux et catalogue 2026"
-                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
 
@@ -289,7 +289,7 @@ export const CreateShipmentScreen: React.FC = () => {
                 value={estimatedWeight}
                 onChange={(e) => setEstimatedWeight(e.target.value)}
                 placeholder="Ex: 2.5 kg"
-                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
 
@@ -300,7 +300,7 @@ export const CreateShipmentScreen: React.FC = () => {
                 value={specialInstructions}
                 onChange={(e) => setSpecialInstructions(e.target.value)}
                 placeholder="Ex: Fragile, ne pas poser d'objet lourd."
-                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
               />
             </div>
           </div>
@@ -322,7 +322,7 @@ export const CreateShipmentScreen: React.FC = () => {
                 }
                 setStep(3);
               }}
-              className="flex-1 py-3.5 rounded-2xl bg-[#0B0F19] hover:bg-slate-800 text-[#D4F63D] font-black text-xs flex items-center justify-center gap-2 cursor-pointer shadow-lg active:scale-98 transition-all"
+              className="flex-1 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-600/25 active:scale-98 transition-all"
             >
               <span>Continuer vers les Contacts</span>
               <ChevronRight size={16} />
@@ -353,7 +353,7 @@ export const CreateShipmentScreen: React.FC = () => {
                   required
                   value={senderName}
                   onChange={(e) => setSenderName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
               <div>
@@ -363,7 +363,7 @@ export const CreateShipmentScreen: React.FC = () => {
                   required
                   value={senderPhone}
                   onChange={(e) => setSenderPhone(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
             </div>
@@ -378,7 +378,7 @@ export const CreateShipmentScreen: React.FC = () => {
                   required
                   value={recipientName}
                   onChange={(e) => setRecipientName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
               <div>
@@ -388,7 +388,7 @@ export const CreateShipmentScreen: React.FC = () => {
                   required
                   value={recipientPhone}
                   onChange={(e) => setRecipientPhone(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
             </div>
@@ -411,7 +411,7 @@ export const CreateShipmentScreen: React.FC = () => {
                 }
                 setStep(4);
               }}
-              className="flex-1 py-3.5 rounded-2xl bg-[#0B0F19] hover:bg-slate-800 text-[#D4F63D] font-black text-xs flex items-center justify-center gap-2 cursor-pointer shadow-lg active:scale-98 transition-all"
+              className="flex-1 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-600/25 active:scale-98 transition-all"
             >
               <span>Vérifier le Récapitulatif</span>
               <ChevronRight size={16} />
@@ -488,7 +488,7 @@ export const CreateShipmentScreen: React.FC = () => {
             <button
               type="button"
               onClick={handleConfirm}
-              className="flex-1 py-4 rounded-2xl bg-[#D4F63D] hover:bg-[#c2e62a] text-[#0B0F19] font-black text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-[#D4F63D]/25 active:scale-95 transition-all"
+              className="flex-1 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-emerald-600/30 active:scale-95 transition-all"
             >
               <Check size={18} className="stroke-[3]" />
               <span>Confirmer l'expédition</span>

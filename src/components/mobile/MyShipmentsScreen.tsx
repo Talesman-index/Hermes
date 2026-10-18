@@ -52,7 +52,7 @@ export const MyShipmentsScreen: React.FC = () => {
           placeholder="Rechercher par référence, contenu ou destinataire..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-2xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#D4F63D]"
+          className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-2xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
         />
       </div>
 
@@ -62,7 +62,7 @@ export const MyShipmentsScreen: React.FC = () => {
           onClick={() => setFilter('all')}
           className={`flex-1 py-1.5 rounded-xl transition-all cursor-pointer ${
             filter === 'all'
-              ? 'bg-[#0B0F19] text-[#D4F63D] font-black shadow-xs'
+              ? 'bg-emerald-600 text-white font-black shadow-xs'
               : 'text-slate-500 hover:text-slate-900'
           }`}
         >
@@ -72,7 +72,7 @@ export const MyShipmentsScreen: React.FC = () => {
           onClick={() => setFilter('active')}
           className={`flex-1 py-1.5 rounded-xl transition-all cursor-pointer ${
             filter === 'active'
-              ? 'bg-[#0B0F19] text-[#D4F63D] font-black shadow-xs'
+              ? 'bg-emerald-600 text-white font-black shadow-xs'
               : 'text-slate-500 hover:text-slate-900'
           }`}
         >
@@ -82,7 +82,7 @@ export const MyShipmentsScreen: React.FC = () => {
           onClick={() => setFilter('delivered')}
           className={`flex-1 py-1.5 rounded-xl transition-all cursor-pointer ${
             filter === 'delivered'
-              ? 'bg-[#0B0F19] text-[#D4F63D] font-black shadow-xs'
+              ? 'bg-emerald-600 text-white font-black shadow-xs'
               : 'text-slate-500 hover:text-slate-900'
           }`}
         >
@@ -108,12 +108,12 @@ export const MyShipmentsScreen: React.FC = () => {
               <div
                 key={shipment.id}
                 onClick={() => openTracking(shipment.id)}
-                className="bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-[#D4F63D] transition-all cursor-pointer space-y-3 group"
+                className="bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-emerald-400/80 transition-all cursor-pointer space-y-3 group"
               >
                 {/* Reference and Status Badge */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-black text-sm text-slate-900 group-hover:text-teal-700 transition-colors">
+                    <span className="font-mono font-black text-sm text-slate-900 group-hover:text-emerald-700 transition-colors">
                       {shipment.reference}
                     </span>
                     <span className="text-[10px] text-slate-400 font-medium">· {shipment.createdAt}</span>
@@ -123,7 +123,7 @@ export const MyShipmentsScreen: React.FC = () => {
                     className={`text-[10px] font-black px-2.5 py-0.5 rounded-full ${
                       isDelivered
                         ? 'bg-emerald-100 text-emerald-800'
-                        : 'bg-[#D4F63D] text-[#0B0F19]'
+                        : 'bg-emerald-600 text-white'
                     }`}
                   >
                     {isDelivered ? 'Livré' : `Étape ${shipment.currentStep}/9`}
@@ -152,7 +152,7 @@ export const MyShipmentsScreen: React.FC = () => {
                   <div className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden">
                     <div
                       className={`h-full rounded-full transition-all ${
-                        isDelivered ? 'bg-emerald-500' : 'bg-gradient-to-r from-teal-500 to-[#D4F63D]'
+                        isDelivered ? 'bg-emerald-500' : 'bg-gradient-to-r from-emerald-500 to-emerald-400'
                       }`}
                       style={{ width: `${progress}%` }}
                     />
@@ -160,9 +160,9 @@ export const MyShipmentsScreen: React.FC = () => {
                 </div>
 
                 {/* Direct Action Link */}
-                <div className="flex items-center justify-between text-[11px] font-extrabold text-slate-900 group-hover:text-teal-700 pt-1">
+                <div className="flex items-center justify-between text-[11px] font-extrabold text-slate-900 group-hover:text-emerald-700 pt-1">
                   <span>Voir le suivi détaillé</span>
-                  <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-[#0B0F19] group-hover:text-[#D4F63D] transition-colors">
+                  <div className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
                     <ChevronRight size={13} className="stroke-[2.5]" />
                   </div>
                 </div>

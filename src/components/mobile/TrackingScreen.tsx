@@ -76,15 +76,15 @@ export const TrackingScreen: React.FC = () => {
           </div>
         </div>
 
-        <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-[#D4F63D] text-[#0B0F19] border border-[#D4F63D]/40">
+        <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
           {activeShipment.currentStep === 9 ? 'Livré' : `Étape ${activeShipment.currentStep}/9`}
         </span>
       </div>
 
-      {/* Main Status Hero Card (GoDash / Dash inspired) */}
-      <div className="bg-[#0B0F19] text-white p-5 rounded-3xl shadow-xl border border-slate-800 space-y-4 relative overflow-hidden">
+      {/* Main Status Hero Card */}
+      <div className="bg-[#0B1F17] text-white p-5 rounded-3xl shadow-xl border border-emerald-900/60 space-y-4 relative overflow-hidden">
         {/* Glow */}
-        <div className="absolute top-0 right-0 w-40 h-40 bg-[#D4F63D]/10 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
         <div className="flex items-start justify-between gap-3 relative z-10">
           <div>
@@ -111,66 +111,66 @@ export const TrackingScreen: React.FC = () => {
         {/* Corridor Route Visualizer */}
         <div className="bg-white/5 rounded-2xl p-3.5 border border-white/10 space-y-2.5 relative z-10">
           <div className="flex items-center justify-between text-xs font-bold">
-            <div className="flex items-center gap-1.5 text-teal-400">
+            <div className="flex items-center gap-1.5 text-emerald-300">
               <MapPin size={13} />
               <span>Cotonou</span>
             </div>
 
-            <div className="flex items-center gap-1 text-[11px] text-slate-400 font-mono">
-              <Bus size={13} className="text-[#D4F63D]" />
+            <div className="flex items-center gap-1 text-[11px] text-slate-300 font-mono">
+              <Bus size={13} className="text-emerald-400" />
               <span>RNIE 2 · 420 km</span>
             </div>
 
-            <div className="flex items-center gap-1.5 text-[#D4F63D]">
+            <div className="flex items-center gap-1.5 text-emerald-300">
               <MapPin size={13} />
               <span>Parakou</span>
             </div>
           </div>
 
           {/* Progress Bar */}
-          <div className="relative w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
+          <div className="relative w-full h-2.5 bg-slate-800/80 rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-teal-400 via-[#D4F63D] to-[#D4F63D] rounded-full transition-all duration-700"
+              className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all duration-700 shadow-sm"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
 
-          <div className="flex items-center justify-between text-[10px] text-slate-400">
+          <div className="flex items-center justify-between text-[10px] text-slate-300">
             <span>Dernière mise à jour : {activeShipment.updatedAt}</span>
-            <span className="text-[#D4F63D] font-bold">Liaison en autocar régulier</span>
+            <span className="text-emerald-400 font-bold">Liaison en autocar régulier</span>
           </div>
         </div>
 
         {/* Security PIN Box */}
         <div className="bg-white/5 rounded-2xl p-3 border border-white/10 flex items-center justify-between gap-3 text-xs relative z-10">
           <div>
-            <p className="text-[10px] uppercase font-bold text-slate-400">Code secret de remise (PIN)</p>
-            <p className="text-xl font-mono font-black text-[#D4F63D] tracking-wider select-all mt-0.5">
+            <p className="text-[10px] uppercase font-bold text-slate-300">Code secret de remise (PIN)</p>
+            <p className="text-xl font-mono font-black text-emerald-400 tracking-wider select-all mt-0.5">
               {activeShipment.securityPin}
             </p>
           </div>
           <div className="text-right">
             <span className="text-[10px] text-slate-400">À dicter au coursier</span>
-            <p className="text-[11px] text-slate-300 font-bold">Validation finale</p>
+            <p className="text-[11px] text-emerald-300 font-bold">Validation finale</p>
           </div>
         </div>
 
         {/* Companion Black Courier Card */}
         <div className="bg-white/5 rounded-2xl p-3 border border-white/10 flex items-center justify-between gap-3 relative z-10">
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#D4F63D] shadow-sm shrink-0">
+            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-emerald-500 shadow-sm shrink-0">
               <img src="/images/black-courier.jpg" alt="Coursier Hermes" className="w-full h-full object-cover object-top" />
             </div>
             <div>
-              <p className="text-[10px] uppercase font-bold text-slate-400">Coursier partenaire</p>
+              <p className="text-[10px] uppercase font-bold text-slate-300">Coursier partenaire</p>
               <p className="text-xs font-bold text-white">Koffi Mensah · Cotonou</p>
-              <p className="text-[10px] text-[#D4F63D] font-mono">+229 97 10 20 30</p>
+              <p className="text-[10px] text-emerald-400 font-mono">+229 97 10 20 30</p>
             </div>
           </div>
           <div className="flex items-center gap-1.5">
             <a 
               href="tel:+22997102030" 
-              className="px-3 py-1.5 rounded-xl bg-[#D4F63D] hover:bg-[#c2e62a] text-[#0B0F19] font-black text-xs flex items-center gap-1.5 shadow-sm active:scale-95 transition-all"
+              className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs flex items-center gap-1.5 shadow-sm active:scale-95 transition-all"
             >
               <Phone size={12} className="stroke-[2.8]" />
               <span>Appeler</span>
@@ -216,7 +216,7 @@ export const TrackingScreen: React.FC = () => {
                     isCompleted
                       ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30'
                       : isCurrent
-                      ? 'bg-[#0B0F19] text-[#D4F63D] ring-4 ring-[#D4F63D]/40 scale-110 shadow-lg'
+                      ? 'bg-emerald-600 text-white ring-4 ring-emerald-500/30 scale-110 shadow-lg'
                       : 'bg-slate-100 text-slate-400 border border-slate-300'
                   }`}
                 >
@@ -231,20 +231,20 @@ export const TrackingScreen: React.FC = () => {
                 <div
                   className={`flex-1 p-3.5 rounded-2xl border transition-all ${
                     isCurrent
-                      ? 'bg-[#F7F9F5] border-[#D4F63D] shadow-sm'
+                      ? 'bg-emerald-50/60 border-emerald-300 shadow-sm'
                       : isCompleted
                       ? 'bg-slate-50/70 border-slate-200/80'
                       : 'bg-slate-50/40 border-slate-200/40'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className={`font-black text-xs ${isCurrent ? 'text-slate-900' : 'text-slate-800'}`}>
+                    <span className={`font-black text-xs ${isCurrent ? 'text-emerald-950' : 'text-slate-800'}`}>
                       {stage.step}. {stage.title}
                     </span>
                     <span
                       className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md ${
                         isCurrent
-                          ? 'bg-[#0B0F19] text-[#D4F63D]'
+                          ? 'bg-emerald-600 text-white'
                           : isCompleted
                           ? 'bg-emerald-100 text-emerald-800'
                           : 'bg-slate-200/60 text-slate-400'
@@ -285,7 +285,7 @@ export const TrackingScreen: React.FC = () => {
           {activeShipment.currentStep < 9 ? (
             <button
               onClick={() => advanceStep(activeShipment.id)}
-              className="flex-1 py-3 px-4 rounded-2xl bg-[#0B0F19] hover:bg-slate-800 text-[#D4F63D] font-black text-xs flex items-center justify-center gap-2 cursor-pointer shadow-md active:scale-98 transition-all"
+              className="flex-1 py-3 px-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs flex items-center justify-center gap-2 cursor-pointer shadow-md shadow-emerald-600/25 active:scale-98 transition-all"
             >
               <span>Valider l'étape suivante ({activeShipment.currentStep + 1}/9)</span>
               <ChevronRight size={15} className="stroke-[3]" />

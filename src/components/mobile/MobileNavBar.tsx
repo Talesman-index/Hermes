@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMobileApp } from '../../context/MobileAppContext';
 import { MobileTab } from '../../types';
-import { Home, PlusCircle, PackageCheck, Box } from 'lucide-react';
+import { Home, PlusCircle, PackageCheck, Box, User } from 'lucide-react';
 
 export const MobileNavBar: React.FC = () => {
   const { activeTab, setActiveTab, shipments } = useMobileApp();
@@ -12,6 +12,7 @@ export const MobileNavBar: React.FC = () => {
     { id: 'home', label: 'Accueil', icon: Home },
     { id: 'create', label: 'Expédier', icon: PlusCircle },
     { id: 'shipments', label: 'Mes colis', icon: Box, badge: activeCount },
+    { id: 'profile', label: 'Profil', icon: User },
   ];
 
   return (
@@ -27,14 +28,14 @@ export const MobileNavBar: React.FC = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 py-2 px-3 rounded-2xl flex flex-col items-center justify-center gap-1 transition-all duration-200 cursor-pointer relative ${
                 isActive
-                  ? 'bg-[#D4F63D] text-[#0B0F19] font-black shadow-lg shadow-[#D4F63D]/25 scale-[1.03]'
+                  ? 'bg-emerald-600 text-white font-black shadow-lg shadow-emerald-600/30 scale-[1.03]'
                   : 'text-slate-400 hover:text-white active:scale-95'
               }`}
             >
               <div className="relative">
                 <Icon size={20} className={isActive ? 'stroke-[2.6]' : 'stroke-[1.8]'} />
                 {tab.badge && tab.badge > 0 && !isActive && (
-                  <span className="absolute -top-1 -right-2 min-w-4 h-4 px-1 rounded-full bg-[#D4F63D] text-[#0B0F19] text-[10px] font-black flex items-center justify-center">
+                  <span className="absolute -top-1 -right-2 min-w-4 h-4 px-1 rounded-full bg-emerald-500 text-white text-[10px] font-black flex items-center justify-center shadow-xs">
                     {tab.badge}
                   </span>
                 )}

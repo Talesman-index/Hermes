@@ -34,7 +34,7 @@ export const HermesLogo: React.FC<HermesLogoProps> = ({
     <div className={`inline-flex items-center gap-2.5 select-none ${className}`}>
       {/* Dynamic Geometric Hermes Winged Emblem */}
       <div 
-        className="relative flex items-center justify-center shrink-0 rounded-2xl bg-[#0B0F19] text-[#D4F63D] shadow-lg shadow-[#D4F63D]/20 transition-transform duration-300 hover:scale-105"
+        className="relative flex items-center justify-center shrink-0 rounded-2xl bg-emerald-600 text-white shadow-lg shadow-emerald-600/25 transition-transform duration-300 hover:scale-105"
         style={{ width: s, height: s }}
       >
         <svg 
@@ -44,25 +44,25 @@ export const HermesLogo: React.FC<HermesLogoProps> = ({
           className="w-3/4 h-3/4"
         >
           {/* Subtle background glow circle */}
-          <circle cx="24" cy="24" r="20" fill="#D4F63D" fillOpacity="0.12" />
+          <circle cx="24" cy="24" r="20" fill="#FFFFFF" fillOpacity="0.18" />
 
           {/* Winged Hermes stylized 'H' and parcel box */}
           {/* Left vertical pillar */}
           <path 
             d="M12 11V37C12 38.1046 12.8954 39 14 39H16C17.1046 39 18 38.1046 18 37V11C18 9.89543 17.1046 9 16 9H14C12.8954 9 12 9.89543 12 11Z" 
-            fill="#D4F63D" 
+            fill="#FFFFFF" 
           />
 
           {/* Right vertical pillar */}
           <path 
             d="M30 11V37C30 38.1046 30.8954 39 32 39H34C35.1046 39 36 38.1046 36 37V11C36 9.89543 35.1046 9 34 9H32C30.8954 9 30 9.89543 30 11Z" 
-            fill="#D4F63D" 
+            fill="#FFFFFF" 
           />
 
           {/* Dynamic forward bridge (represents speed, connection, route) */}
           <path 
             d="M16 21H32V27H16V21Z" 
-            fill="#D4F63D" 
+            fill="#A7F3D0" 
           />
 
           {/* Upper winged aerodynamic chevron (Hermes caduceus wing) */}
@@ -72,7 +72,7 @@ export const HermesLogo: React.FC<HermesLogoProps> = ({
           />
 
           {/* Central energetic dot / package pin */}
-          <circle cx="24" cy="24" r="2.5" fill="#0B0F19" />
+          <circle cx="24" cy="24" r="2.5" fill="#047857" />
         </svg>
       </div>
 
@@ -86,7 +86,7 @@ export const HermesLogo: React.FC<HermesLogoProps> = ({
           >
             HERMES
           </span>
-          <span className="text-[9px] font-black tracking-wider uppercase px-1.5 py-0.5 rounded-md bg-[#D4F63D] text-[#0B0F19]">
+          <span className="text-[9px] font-black tracking-wider uppercase px-1.5 py-0.5 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200">
             BÉNIN
           </span>
         </div>

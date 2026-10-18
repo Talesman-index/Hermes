@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { 
   ArrowRight, 
-  Bike, 
-  Bus, 
-  KeyRound, 
-  Sparkles, 
   MapPin, 
-  Package, 
-  CheckCircle2,
-  ChevronRight
+  ShieldCheck, 
+  Sparkles, 
+  Clock, 
+  ChevronRight,
+  Package,
+  Check
 } from 'lucide-react';
 
 interface OnboardingScreenProps {
@@ -21,48 +20,39 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
   const slides = [
     {
       id: 1,
-      badge: 'Coordination Porte-à-Porte · Bénin',
-      title: 'Livré.\nÀ l’heure.',
-      subtitle: 'Suivi en temps réel et coordination intelligente pour chaque colis entre Cotonou et Parakou.',
-      image: '/images/godash-hero.jpg',
-      alt: 'Route logistique Cotonou Parakou',
-      isHeroStyle: true,
-      buttonText: 'Continuer',
-      features: [
-        'Collecte à domicile à Cotonou',
-        'Transport en autocar régulier',
-        'Livraison directe à Parakou'
-      ]
+      tag: '01 · Premier Kilomètre',
+      title: 'Collecte directement\nà votre porte',
+      subtitle: 'Un coursier partenaire Hermes récupère votre colis chez vous ou à votre commerce. Fini les déplacements et l’attente aux gares.',
+      image: '/images/onboarding-collecte.jpg',
+      alt: 'Coursier Hermes pour la collecte à domicile',
+      buttonText: 'Suivant',
+      badge: 'Cotonou',
+      badgeColor: 'bg-emerald-600 text-white',
+      accentLabel: 'Zéro déplacement en agence',
     },
     {
       id: 2,
-      badge: '01 · Premier Kilomètre',
-      title: 'Collecte directement\nchez vous.',
-      subtitle: 'Un coursier partenaire Hermes récupère votre colis à votre domicile ou commerce. Fini les files d’attente aux gares.',
-      image: '/images/black-courier.jpg',
-      alt: 'Coursier partenaire Hermes',
-      isHeroStyle: false,
+      tag: '02 · Transport Interurbain',
+      title: 'Trajet sécurisé sur le corridor RNIE 2',
+      subtitle: 'Votre colis voyage en soute d’autocars partenaires entre Cotonou et Parakou. Suivi en temps réel et heure d’arrivée garantie.',
+      image: '/images/onboarding-transit.jpg',
+      alt: 'Transport interurbain Cotonou Parakou',
       buttonText: 'Suivant',
-      features: [
-        'Zéro déplacement en agence',
-        'Étiquetage et vérification sur place',
-        'Prise en charge en quelques minutes'
-      ]
+      badge: '420 km · RNIE 2',
+      badgeColor: 'bg-emerald-700 text-white',
+      accentLabel: 'Heure d’arrivée estimée en direct',
     },
     {
       id: 3,
-      badge: '02 & 03 · Dernier Kilomètre',
-      title: 'Remise garantie\ncontre code secret.',
-      subtitle: 'À l’arrivée à Parakou, votre colis est livré en main propre au destinataire contre validation d’un code PIN confidentiel.',
-      image: '/images/black-customer.jpg',
-      alt: 'Destinataire recevant son colis avec le sourire',
-      isHeroStyle: false,
+      tag: '03 · Dernier Kilomètre',
+      title: 'Remise garantie contre code PIN secret',
+      subtitle: 'Livraison en main propre au destinataire à Parakou. La remise n’est validée qu’après saisie du code PIN confidentiel à 6 chiffres.',
+      image: '/images/onboarding-delivery.jpg',
+      alt: 'Remise sécurisée avec code PIN',
       buttonText: 'Commencer maintenant',
-      features: [
-        'Transport en soute d’autocars réguliers',
-        'Validation par code PIN à 6 chiffres',
-        'Preuve de livraison instantanée'
-      ]
+      badge: 'Code PIN sécurisé',
+      badgeColor: 'bg-emerald-600 text-white',
+      accentLabel: '100% garanti et sans litige',
     },
   ];
 
@@ -77,105 +67,104 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
   };
 
   return (
-    <div className="flex flex-col justify-between min-h-[790px] -mx-4 -my-2 p-5 bg-[#D4F63D] text-[#0B0F19] relative overflow-hidden transition-all duration-300">
-      {/* Top Header Bar */}
-      <div className="flex items-center justify-between pt-2 z-20">
-        <div className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-2xl bg-[#0B0F19] text-[#D4F63D] flex items-center justify-center font-black shadow-md">
-            <Package size={20} className="stroke-[2.8]" />
-          </div>
-          <div>
-            <span className="font-black text-lg tracking-tight font-sans text-[#0B0F19]">HERMES</span>
-            <span className="text-[9px] font-extrabold uppercase ml-1 px-1.5 py-0.2 rounded bg-[#0B0F19] text-[#D4F63D]">
-              BÉNIN
-            </span>
-          </div>
+    <div className="flex flex-col h-[790px] -mx-4 -my-2 bg-[#E9F4EE] relative overflow-hidden select-none">
+      {/* Soft Sky Ambient Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#D8EEE2] via-[#EAF5EF] to-white pointer-events-none" />
+
+      {/* Top Header Bar (matches image 2: 9:41 on left, Skip on right) */}
+      <div className="relative z-30 flex items-center justify-between px-6 pt-4 pb-2">
+        <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full border border-emerald-900/10 shadow-xs">
+          <div className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
+          <span className="text-[11px] font-black tracking-wide text-slate-800 uppercase font-sans">
+            HERMES <span className="text-emerald-700">BÉNIN</span>
+          </span>
         </div>
 
         <button
           onClick={onComplete}
-          className="text-xs font-black text-[#0B0F19] bg-white/70 hover:bg-white px-3.5 py-1.5 rounded-full transition-all cursor-pointer shadow-xs active:scale-95"
+          className="text-xs font-bold text-slate-700 hover:text-emerald-800 bg-white/80 hover:bg-white backdrop-blur-md px-3.5 py-1.5 rounded-full border border-emerald-900/10 transition-all cursor-pointer shadow-xs active:scale-95"
         >
           Passer
         </button>
       </div>
 
-      {/* Main Slide Body */}
-      <div className="space-y-4 my-auto z-10 pt-2">
-        {/* Title and subtitle exactly like GoDash */}
-        <div className="space-y-1.5 px-1">
-          <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#0B0F19]/15 text-[#0B0F19]">
-            {slide.badge}
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-black text-[#0B0F19] tracking-tight leading-[1.08] whitespace-pre-line mt-1">
-            {slide.title}
-          </h1>
-          <p className="text-xs text-slate-800 leading-relaxed font-medium max-w-xs">
-            {slide.subtitle}
-          </p>
-        </div>
-
-        {/* 3D Illustration Card */}
-        <div className="relative rounded-3xl overflow-hidden border-3 border-[#0B0F19] shadow-2xl bg-[#0B0F19] aspect-square max-h-[320px] mx-auto group">
+      {/* Top Half: Scenic Illustration */}
+      <div className="relative flex-1 flex items-center justify-center px-4 overflow-hidden z-10">
+        <div className="relative w-full max-w-[340px] aspect-square rounded-3xl overflow-hidden shadow-xl border-2 border-white/60 bg-white">
           <img
             key={slide.id}
             src={slide.image}
             alt={slide.alt}
-            className="w-full h-full object-cover object-center animate-in zoom-in-95 duration-500"
+            className="w-full h-full object-cover object-center animate-in fade-in zoom-in-95 duration-500"
           />
 
-          {/* Floating corridor indicator */}
-          <div className="absolute bottom-3 left-3 right-3 bg-[#0B0F19]/90 backdrop-blur-md rounded-2xl p-2 px-3 flex items-center justify-between text-[11px] text-white">
-            <span className="flex items-center gap-1 font-bold text-slate-200">
-              <MapPin size={12} className="text-[#D4F63D]" />
-              Cotonou ➔ Parakou
+          {/* Floating Pill Tag on Illustration */}
+          <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-2xl shadow-md border border-emerald-100 flex items-center gap-1.5 animate-in slide-in-from-top-2 duration-300">
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <span className="text-[11px] font-extrabold text-slate-800 tracking-tight">
+              {slide.accentLabel}
             </span>
-            <span className="font-mono font-black text-[#D4F63D]">RNIE 2 · 420 km</span>
+          </div>
+
+          {/* Floating City/Route Pill */}
+          <div className="absolute bottom-3 right-3 bg-emerald-950/90 text-white backdrop-blur-md px-3 py-1 rounded-full shadow-lg border border-emerald-500/30 text-[10px] font-black uppercase tracking-wider flex items-center gap-1">
+            <MapPin size={11} className="text-emerald-400" />
+            <span>{slide.badge}</span>
           </div>
         </div>
 
-        {/* Feature Highlights Pills */}
-        <div className="space-y-1.5 max-w-sm mx-auto">
-          {slide.features.map((feature, idx) => (
-            <div
-              key={idx}
-              className="flex items-center gap-2 p-2 rounded-xl bg-white/80 backdrop-blur-sm border border-black/10 text-xs font-bold text-slate-900 shadow-xs"
-            >
-              <div className="w-4 h-4 rounded-full bg-[#0B0F19] text-[#D4F63D] flex items-center justify-center shrink-0 font-black text-[9px]">
-                ✓
-              </div>
-              <span className="text-[11px]">{feature}</span>
-            </div>
-          ))}
-        </div>
+        {/* Playful Floating Mascot Sticker (just like the yellow scooter mascot in the reference) */}
+        {currentSlide === 0 && (
+          <div className="absolute -bottom-4 left-6 z-20 animate-bounce duration-1000 hidden sm:flex items-center gap-2 bg-amber-400 text-slate-900 font-black text-[10px] px-3 py-1.5 rounded-2xl shadow-xl border-2 border-white rotate-[-6deg]">
+            <span>⚡ Expédition express</span>
+          </div>
+        )}
       </div>
 
-      {/* Bottom Controls */}
-      <div className="space-y-4 pt-3 z-20">
-        {/* Pagination Dots (GoDash style) */}
-        <div className="flex items-center justify-center gap-2">
+      {/* Bottom Half: Curved White Bottom Sheet Card (exact layout of Image 2) */}
+      <div className="relative z-20 bg-white rounded-t-[36px] shadow-2xl px-6 pt-6 pb-7 border-t border-emerald-100/60 flex flex-col justify-between">
+        {/* Pagination Dots (Image 2 style: pill for active, small circles for inactive) */}
+        <div className="flex items-center justify-center gap-2 mb-4">
           {slides.map((s, idx) => {
             const isActive = idx === currentSlide;
             return (
               <button
                 key={s.id}
                 onClick={() => setCurrentSlide(idx)}
-                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  isActive ? 'w-8 bg-[#0B0F19] shadow-md' : 'w-2.5 bg-[#0B0F19]/30 hover:bg-[#0B0F19]/50'
+                className={`transition-all duration-300 cursor-pointer ${
+                  isActive 
+                    ? 'w-7 h-2 bg-emerald-600 rounded-full shadow-sm shadow-emerald-600/30' 
+                    : 'w-2 h-2 bg-slate-200 hover:bg-slate-300 rounded-full'
                 }`}
-                title={`Aller à l'écran ${idx + 1}`}
+                title={`Écran ${idx + 1}`}
               />
             );
           })}
         </div>
 
-        {/* Large Rounded Black Pill Button (exact GoDash 'Get Started' style) */}
+        {/* Text Area */}
+        <div className="text-center space-y-2 mb-6">
+          <div className="inline-flex items-center gap-1 text-[11px] font-black uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100/80">
+            <Sparkles size={11} className="text-emerald-600" />
+            <span>{slide.tag}</span>
+          </div>
+
+          <h2 className="text-2xl sm:text-[26px] font-black text-slate-900 tracking-tight leading-tight whitespace-pre-line">
+            {slide.title}
+          </h2>
+
+          <p className="text-xs sm:text-[13px] text-slate-500 font-medium leading-relaxed max-w-xs mx-auto">
+            {slide.subtitle}
+          </p>
+        </div>
+
+        {/* CTA Button (Vibrant Emerald Green Pill from Image 2) */}
         <button
           onClick={handleNext}
-          className="w-full py-4 px-6 rounded-2xl bg-[#0B0F19] hover:bg-slate-900 text-white font-black text-sm flex items-center justify-center gap-2 shadow-2xl shadow-black/30 active:scale-98 transition-all cursor-pointer"
+          className="w-full py-4 px-6 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm tracking-wide shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] transition-all"
         >
           <span>{slide.buttonText}</span>
-          <ArrowRight size={18} className="stroke-[2.8]" />
+          <ArrowRight size={17} className="stroke-[2.5]" />
         </button>
       </div>
     </div>
