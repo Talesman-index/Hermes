@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HermesLogo } from './HermesLogo';
-import { MapPin, Navigation, Sparkles, ShieldCheck } from 'lucide-react';
+import { MapPin, Navigation, ShieldCheck } from 'lucide-react';
 
 interface PreloaderProps {
   onComplete?: () => void;
@@ -112,26 +112,20 @@ export const Preloader: React.FC<PreloaderProps> = ({
         <div className="w-full px-2 space-y-3.5 mt-2">
           {/* Progress bar header with percentage */}
           <div className="flex items-center justify-between text-xs font-bold">
-            <div className="flex items-center gap-1.5 text-slate-700">
-              <Sparkles size={13} className="text-amber-500 animate-spin" style={{ animationDuration: '4s' }} />
-              <span className="font-extrabold text-[11px] uppercase tracking-wide">
-                Chargement
-              </span>
-            </div>
+            <span className="font-extrabold text-[11px] uppercase tracking-wide text-slate-700">
+              Chargement
+            </span>
             <span className="font-mono text-emerald-800 text-[13px] font-black bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
               {Math.round(progress)}%
             </span>
           </div>
 
-          {/* Precision Glowing Progress Track */}
+          {/* Clean Single-Color Progress Track */}
           <div className="relative h-2 w-full bg-slate-200/60 rounded-full overflow-hidden shadow-inner border border-slate-200/50">
             <div 
-              className="h-full rounded-full bg-gradient-to-r from-emerald-500 via-amber-400 to-emerald-600 transition-all duration-150 ease-out relative shadow-sm"
+              className="h-full rounded-full bg-emerald-600 transition-all duration-150 ease-out"
               style={{ width: `${progress}%` }}
-            >
-              {/* White-hot leading spark */}
-              <div className="absolute right-0 top-0 bottom-0 w-2.5 bg-white/90 rounded-full blur-[1px] shadow-sm animate-pulse" />
-            </div>
+            />
           </div>
 
           {/* Morphing Micro-status message */}
@@ -158,7 +152,7 @@ export const Preloader: React.FC<PreloaderProps> = ({
           {/* Animated Road Track */}
           <div className="relative flex-1 mx-3 h-1 bg-slate-200 rounded-full overflow-hidden">
             <div 
-              className="absolute top-0 bottom-0 w-3 rounded-full bg-gradient-to-r from-amber-400 to-emerald-500 animate-route-drive"
+              className="absolute top-0 bottom-0 w-3 rounded-full bg-emerald-600 animate-route-drive"
               style={{
                 animation: 'routeDrive 2s ease-in-out infinite'
               }}
