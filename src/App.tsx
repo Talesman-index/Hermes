@@ -1,6 +1,5 @@
 import React from 'react';
 import { MobileAppProvider, useMobileApp } from './context/MobileAppContext';
-import { DemoControlBar } from './components/mobile/DemoControlBar';
 import { MobileFrame } from './components/mobile/MobileFrame';
 import { MobileNavBar } from './components/mobile/MobileNavBar';
 import { OnboardingScreen } from './components/mobile/OnboardingScreen';
@@ -17,9 +16,6 @@ const MobileMain: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#F0F4F2] flex flex-col font-sans selection:bg-emerald-600 selection:text-white">
-      {/* Top Demo Bar for the Presenter */}
-      <DemoControlBar />
-
       {/* Main Centered Smartphone Experience */}
       <MobileFrame>
         {showOnboarding ? (
