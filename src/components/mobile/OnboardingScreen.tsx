@@ -89,7 +89,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
       </div>
 
       {/* Top Half: Scenic Illustration */}
-      <div className="relative flex-1 flex items-center justify-center px-4 overflow-hidden z-10">
+      <div className="relative flex-1 flex items-center justify-center px-4 z-10">
         <div className="relative w-full max-w-[340px] aspect-square rounded-3xl overflow-hidden shadow-xl border-2 border-white/60 bg-white">
           <img
             key={slide.id}
@@ -112,13 +112,6 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
             <span>{slide.badge}</span>
           </div>
         </div>
-
-        {/* Playful Floating Mascot Sticker (just like the yellow scooter mascot in the reference) */}
-        {currentSlide === 0 && (
-          <div className="absolute -bottom-4 left-6 z-20 animate-bounce duration-1000 hidden sm:flex items-center gap-2 bg-amber-400 text-slate-900 font-black text-[10px] px-3 py-1.5 rounded-2xl shadow-xl border-2 border-white rotate-[-6deg]">
-            <span>⚡ Expédition express</span>
-          </div>
-        )}
       </div>
 
       {/* Bottom Half: Curved White Bottom Sheet Card (exact layout of Image 2) */}
