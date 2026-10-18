@@ -43,10 +43,10 @@ export const HomeScreen: React.FC = () => {
           <Menu size={18} className="stroke-[2.5]" />
         </button>
 
-        {/* Brand Logo Card (exact style of user reference) */}
+        {/* Brand Logo (sans fond / seamless) */}
         <div 
           onClick={openOnboarding}
-          className="bg-white/95 px-3 py-1.5 rounded-2xl shadow-xs border border-slate-100 hover:border-emerald-200 transition-all cursor-pointer select-none group"
+          className="flex items-center cursor-pointer select-none group transition-transform active:scale-95"
           title="Voir l'onboarding de présentation"
         >
           <HermesLogo size="sm" showSubtitle={false} />

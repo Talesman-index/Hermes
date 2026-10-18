@@ -179,7 +179,7 @@ export const HermesLogo: React.FC<HermesLogoProps> = ({
         >
           HERMES
         </span>
-        <span className="text-[9px] font-black tracking-widest uppercase px-2 py-0.5 rounded-md bg-emerald-100/90 text-emerald-800 border border-emerald-300/50 shadow-2xs">
+        <span className="text-[9px] font-black tracking-widest uppercase text-emerald-600">
           BÉNIN
         </span>
       </div>

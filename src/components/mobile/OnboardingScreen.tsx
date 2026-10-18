@@ -74,7 +74,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ onComplete }
 
       {/* Top Header Bar */}
       <div className="relative z-30 flex items-center justify-between px-6 pt-4 pb-2">
-        <div className="bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-2xl shadow-xs border border-emerald-900/10">
+        <div className="flex items-center">
           <HermesLogo size="sm" showSubtitle={false} />
         </div>
 

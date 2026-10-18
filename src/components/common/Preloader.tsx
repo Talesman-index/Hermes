@@ -106,8 +106,8 @@ export const Preloader: React.FC<PreloaderProps> = ({
           {/* Mid aura */}
           <div className="absolute w-36 h-36 rounded-full bg-gradient-to-tr from-emerald-400/20 via-amber-300/20 to-emerald-500/20 blur-xl pointer-events-none" />
           
-          {/* Elevated Emblem Card */}
-          <div className="relative bg-white/95 backdrop-blur-2xl p-6 rounded-3xl shadow-2xl shadow-emerald-950/10 border border-white ring-1 ring-emerald-100/80 flex flex-col items-center">
+          {/* Seamless Logo Presentation (sans fond) */}
+          <div className="relative flex flex-col items-center py-2">
             <HermesLogo 
               size="2xl" 
               layout="vertical"
