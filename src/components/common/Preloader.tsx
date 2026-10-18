@@ -97,24 +97,15 @@ export const Preloader: React.FC<PreloaderProps> = ({
         </div>
       </div>
 
-      {/* CENTER HERO: Majestic Hermes Mythological Wing Showcase */}
+      {/* CENTER HERO: Pure Transparent Hermes Wing Showcase (Sans fond) */}
       <div className="flex flex-col items-center justify-center my-auto w-full max-w-sm">
-        {/* Pulsing Concentric Aura Rings */}
-        <div className="relative flex items-center justify-center mb-6">
-          {/* Outer gentle wave */}
-          <div className="absolute w-44 h-44 rounded-full bg-emerald-400/10 animate-ping duration-1000 pointer-events-none" />
-          {/* Mid aura */}
-          <div className="absolute w-36 h-36 rounded-full bg-gradient-to-tr from-emerald-400/20 via-amber-300/20 to-emerald-500/20 blur-xl pointer-events-none" />
-          
-          {/* Seamless Logo Presentation (sans fond) */}
-          <div className="relative flex flex-col items-center py-2">
-            <HermesLogo 
-              size="2xl" 
-              layout="vertical"
-              animated={true}
-              showSubtitle={true}
-            />
-          </div>
+        <div className="flex flex-col items-center justify-center mb-6 py-2">
+          <HermesLogo 
+            size="2xl" 
+            layout="vertical"
+            animated={true}
+            showSubtitle={true}
+          />
         </div>
 
         {/* PROGRESS SECTION */}
