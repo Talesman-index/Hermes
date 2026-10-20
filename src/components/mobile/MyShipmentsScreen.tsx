@@ -111,31 +111,38 @@ export const MyShipmentsScreen: React.FC = () => {
                 className="bg-white rounded-3xl p-4 sm:p-5 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-emerald-400/80 transition-all cursor-pointer space-y-3 group"
               >
                 {/* Reference and Status Badge */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono font-black text-sm text-slate-900 group-hover:text-emerald-700 transition-colors">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <span className="font-mono font-black text-xs sm:text-sm text-slate-900 group-hover:text-emerald-700 transition-colors shrink-0">
                       {shipment.reference}
                     </span>
-                    <span className="text-[10px] text-slate-400 font-medium">· {shipment.createdAt}</span>
+                    <span className="text-[10px] text-slate-400 font-medium truncate">· {shipment.createdAt}</span>
                   </div>
 
-                  <span
-                    className={`text-[10px] font-black px-2.5 py-0.5 rounded-full ${
-                      isDelivered
-                        ? 'bg-emerald-100 text-emerald-800'
-                        : 'bg-emerald-600 text-white'
-                    }`}
-                  >
-                    {isDelivered ? 'Livré' : `Étape ${shipment.currentStep}/9`}
-                  </span>
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700 whitespace-nowrap shrink-0">
+                      {shipment.serviceFee || '5 000 FCFA'}
+                    </span>
+                    <span
+                      className={`text-[10px] font-black px-2.5 py-0.5 rounded-full whitespace-nowrap shrink-0 ${
+                        isDelivered
+                          ? 'bg-emerald-100 text-emerald-800'
+                          : 'bg-emerald-600 text-white'
+                      }`}
+                    >
+                      {isDelivered ? 'Livré' : `Étape ${shipment.currentStep}/9`}
+                    </span>
+                  </div>
                 </div>
 
-                {/* Description & Route */}
+                {/* Description & Route with Pickup District */}
                 <div>
                   <p className="text-xs font-bold text-slate-800 leading-snug">{shipment.description}</p>
                   <p className="text-[11px] text-slate-500 mt-0.5 flex items-center gap-1">
-                    <MapPin size={11} className="text-slate-400 shrink-0" />
-                    <span>{shipment.origin} ➔ {shipment.destination} · Pour {shipment.recipient.name}</span>
+                    <MapPin size={11} className="text-emerald-600 shrink-0" />
+                    <span>
+                      {shipment.pickupLocation?.district ? `${shipment.pickupLocation.district} (Cotonou)` : shipment.origin} ➔ {shipment.destination} · Pour {shipment.recipient.name}
+                    </span>
                   </p>
                 </div>
 

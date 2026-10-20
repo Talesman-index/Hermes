@@ -81,6 +81,20 @@ export const DeliveredScreen: React.FC = () => {
             <span className="text-slate-400 text-[10px]">Destinataire :</span>
             <p className="font-bold text-slate-800">{activeShipment.recipient.name}</p>
           </div>
+          <div className="col-span-2 pt-2 border-t border-slate-100 grid grid-cols-2 gap-2">
+            <div>
+              <span className="text-slate-400 text-[10px]">Frais réglés :</span>
+              <p className="font-mono font-bold text-emerald-700">
+                {activeShipment.serviceFee || '5 000 FCFA'} ({activeShipment.payment?.method || 'Mobile Money'})
+              </p>
+            </div>
+            <div>
+              <span className="text-slate-400 text-[10px]">Collecte Maps GPS :</span>
+              <p className="font-bold text-slate-800 truncate">
+                {activeShipment.pickupLocation?.district || 'Cotonou (GPS validé)'}
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">

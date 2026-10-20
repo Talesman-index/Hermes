@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { MobileShipment, MobileShipmentStep, MobileTab, WORKFLOW_STAGES } from '../types';
+import { MobileShipment, MobileShipmentStep, MobileTab, WORKFLOW_STAGES, PickupLocation, ShipmentPayment } from '../types';
 import confetti from 'canvas-confetti';
 
 interface CreateShipmentInput {
@@ -15,6 +15,9 @@ interface CreateShipmentInput {
   senderPhone: string;
   recipientName: string;
   recipientPhone: string;
+  pickupLocation?: PickupLocation;
+  payment?: ShipmentPayment;
+  serviceFee?: string;
 }
 
 interface MobileAppContextType {
@@ -56,7 +59,24 @@ const INITIAL_SHIPMENTS: MobileShipment[] = [
     currentStep: 5, // En transport
     carrierName: 'Compagnie Transporteur Partenaire Démo',
     securityPin: '748 219',
-    serviceFee: 'À confirmer',
+    serviceFee: '5 000 FCFA',
+    pickupLocation: {
+      lat: 6.3571,
+      lng: 2.4048,
+      address: 'Rue 340, Haie Vive, Cotonou',
+      district: 'Haie Vive (Camp Guézo)',
+      mapUrl: 'https://maps.google.com/?q=6.3571,2.4048',
+      notes: 'Immeuble beige face pharmacie'
+    },
+    payment: {
+      status: 'paid',
+      method: 'MTN Mobile Money',
+      amount: 5000,
+      amountFormatted: '5 000 FCFA',
+      transactionId: 'TXN-MTN-884920',
+      paidAt: '18 Oct 2026 · 07:46',
+      phoneNumber: '+229 97 10 20 30'
+    },
     createdAt: '18 Oct 2026 · 07:45',
     updatedAt: '18 Oct 2026 · 11:30',
     sender: {
@@ -120,7 +140,23 @@ const INITIAL_SHIPMENTS: MobileShipment[] = [
     currentStep: 9, // Livré
     carrierName: 'Autocar Régulier Interurbain',
     securityPin: '519 384',
-    serviceFee: 'À confirmer',
+    serviceFee: '3 500 FCFA',
+    pickupLocation: {
+      lat: 6.3688,
+      lng: 2.4109,
+      address: 'Cadjehoun, Cotonou',
+      district: 'Cadjehoun (Étoile Rouge)',
+      mapUrl: 'https://maps.google.com/?q=6.3688,2.4109'
+    },
+    payment: {
+      status: 'paid',
+      method: 'Moov Money',
+      amount: 3500,
+      amountFormatted: '3 500 FCFA',
+      transactionId: 'TXN-MOOV-492104',
+      paidAt: '17 Oct 2026 · 09:12',
+      phoneNumber: '+229 96 11 22 33'
+    },
     createdAt: '17 Oct 2026 · 09:10',
     updatedAt: '17 Oct 2026 · 17:45',
     sender: {
@@ -152,7 +188,23 @@ const INITIAL_SHIPMENTS: MobileShipment[] = [
     currentStep: 2, // Hermes en route
     carrierName: 'Compagnie Transporteur Partenaire Démo',
     securityPin: '892 410',
-    serviceFee: 'À confirmer',
+    serviceFee: '6 000 FCFA',
+    pickupLocation: {
+      lat: 6.3765,
+      lng: 2.4532,
+      address: 'Akpakpa, Cotonou',
+      district: 'Akpakpa (Carrefour PK3)',
+      mapUrl: 'https://maps.google.com/?q=6.3765,2.4532'
+    },
+    payment: {
+      status: 'paid',
+      method: 'MTN Mobile Money',
+      amount: 6000,
+      amountFormatted: '6 000 FCFA',
+      transactionId: 'TXN-MTN-391850',
+      paidAt: '18 Oct 2026 · 09:32',
+      phoneNumber: '+229 97 88 99 00'
+    },
     createdAt: '18 Oct 2026 · 09:30',
     updatedAt: '18 Oct 2026 · 09:50',
     sender: {
@@ -188,7 +240,13 @@ export const MobileAppProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   const [shipments, setShipments] = useState<MobileShipment[]>(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) return JSON.parse(stored);
+      if (stored) {
+        const parsed: MobileShipment[] = JSON.parse(stored);
+        return parsed.map((s) => ({
+          ...s,
+          serviceFee: !s.serviceFee || s.serviceFee === 'À confirmer' ? '5 000 FCFA' : s.serviceFee,
+        }));
+      }
     } catch {
       // fallback
     }
@@ -258,6 +316,8 @@ export const MobileAppProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     const now = new Date();
     const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
 
+    const calculatedFee = input.serviceFee || (input.payment ? input.payment.amountFormatted : '5 000 FCFA');
+
     const newShipment: MobileShipment = {
       id: `shipment-${Date.now()}`,
       reference: `HMD-2026-${randomCode}`,
@@ -270,7 +330,9 @@ export const MobileAppProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       currentStep: 1, // Étape 1 : Demande confirmée
       carrierName: 'Compagnie Transporteur Partenaire Démo',
       securityPin: randomPin,
-      serviceFee: 'À confirmer',
+      serviceFee: calculatedFee,
+      pickupLocation: input.pickupLocation,
+      payment: input.payment,
       createdAt: `Aujourd'hui · ${timeStr}`,
       updatedAt: `Aujourd'hui · ${timeStr}`,
       sender: {

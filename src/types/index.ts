@@ -80,6 +80,25 @@ export const WORKFLOW_STAGES: WorkflowStage[] = [
   },
 ];
 
+export interface PickupLocation {
+  lat: number;
+  lng: number;
+  address: string;
+  district?: string;
+  mapUrl: string;
+  notes?: string;
+}
+
+export interface ShipmentPayment {
+  status: 'paid' | 'pending';
+  method: 'MTN Mobile Money' | 'Moov Money' | 'Carte Bancaire';
+  amount: number;
+  amountFormatted: string;
+  transactionId: string;
+  paidAt: string;
+  phoneNumber?: string;
+}
+
 export interface MobileShipment {
   id: string;
   reference: string;
@@ -104,7 +123,9 @@ export interface MobileShipment {
   };
   carrierName: string;
   securityPin: string;
-  serviceFee: string; // 'À confirmer'
+  serviceFee: string;
+  pickupLocation?: PickupLocation;
+  payment?: ShipmentPayment;
   createdAt: string;
   updatedAt: string;
   history: {

@@ -141,10 +141,16 @@ export const HomeScreen: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Banner */}
-        <div className="pt-1 flex items-center justify-between text-[11px] text-emerald-100 font-medium border-t border-emerald-500/40">
-          <span className="truncate max-w-[210px]">{activeShipment.description}</span>
-          <span className="font-mono font-bold text-white bg-emerald-800/50 px-2 py-0.5 rounded-full">Étape {activeShipment.currentStep}/9</span>
+        {/* Bottom Banner with Pickup District & Paid Fee Badge */}
+        <div className="pt-2 flex items-center justify-between text-[11px] text-emerald-100 font-medium border-t border-emerald-500/40">
+          <div className="flex items-center gap-1.5 truncate max-w-[200px]">
+            <MapPin size={11} className="text-emerald-300 shrink-0" />
+            <span className="truncate">{activeShipment.pickupLocation?.district || 'Cotonou'} · {activeShipment.description}</span>
+          </div>
+          <span className="font-mono font-bold text-white bg-emerald-800/60 px-2 py-0.5 rounded-full text-[10px] flex items-center gap-1 whitespace-nowrap shrink-0">
+            <span>{activeShipment.serviceFee || '5 000 FCFA'}</span>
+            <span className="text-emerald-300">✓</span>
+          </span>
         </div>
       </div>
 
@@ -373,30 +379,49 @@ export const HomeScreen: React.FC = () => {
             </div>
 
             <div className="space-y-3 text-xs">
-              <div className="p-3 rounded-2xl bg-amber-50 border border-amber-200/80 text-amber-900 space-y-1">
+              <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-950 space-y-1.5">
                 <div className="flex items-center justify-between font-bold">
-                  <span>Frais de service :</span>
-                  <span className="font-mono bg-amber-200/80 px-2 py-0.5 rounded font-black">À confirmer</span>
+                  <span className="text-xs">Grille des tarifs officiels :</span>
+                  <span className="font-mono bg-emerald-200/80 text-emerald-900 px-2 py-0.5 rounded text-[11px] font-black">
+                    Paiement Mobile Money
+                  </span>
                 </div>
-                <p className="text-[11px] text-amber-800 leading-snug">
-                  Conformément au PRD, aucun prix n'est présenté comme définitif avant la validation du modèle économique avec les transporteurs partenaires.
+                <div className="space-y-1 text-[11px] text-emerald-900">
+                  <div className="flex justify-between">
+                    <span>• Documents / Plis urgents :</span>
+                    <strong className="font-mono">3 500 FCFA</strong>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>• Colis standard & Textiles :</span>
+                    <strong className="font-mono">5 000 FCFA</strong>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>• Matériel électronique / Valeur :</span>
+                    <strong className="font-mono">6 000 FCFA</strong>
+                  </div>
+                </div>
+                <p className="text-[10px] text-emerald-800 pt-1 border-t border-emerald-200/80 leading-snug">
+                  Règlement sécurisé direct via MTN Mobile Money (*144#), Moov Money (*155#) ou Carte bancaire.
                 </p>
               </div>
 
               <div className="p-3 rounded-2xl bg-slate-50 border border-slate-200 space-y-1 text-slate-700">
-                <p className="font-bold text-slate-900">Ce que comprend le service :</p>
-                <p>✓ Déplacement du coursier chez vous à Cotonou</p>
-                <p>✓ Enregistrement et étiquetage sécurisé</p>
-                <p>✓ Transport en soute d'autocar partenaire</p>
-                <p>✓ Livraison en main propre avec code PIN à Parakou</p>
+                <p className="font-bold text-slate-900">Ce que comprend votre tarif :</p>
+                <p>✓ Collecte par coursier dédié à votre localisation Maps GPS</p>
+                <p>✓ Enregistrement & étiquetage inviolable avec scellé</p>
+                <p>✓ Acheminement interurbain en autocar partenaire (420 km)</p>
+                <p>✓ Livraison finale en main propre contre code PIN à Parakou</p>
               </div>
             </div>
 
             <button
-              onClick={() => setTarifsModal(false)}
-              className="w-full py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-black text-xs cursor-pointer"
+              onClick={() => {
+                setTarifsModal(false);
+                setActiveTab('create');
+              }}
+              className="w-full py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs cursor-pointer shadow-md shadow-emerald-600/30 active:scale-[0.98] transition-all"
             >
-              Fermer
+              Créer une expédition & Payer en ligne
             </button>
           </div>
         </div>

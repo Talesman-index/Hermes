@@ -20,7 +20,10 @@ import {
   ChevronRight, 
   Sparkles, 
   QrCode,
-  Zap
+  Zap,
+  ExternalLink,
+  Receipt,
+  CreditCard
 } from 'lucide-react';
 
 export const TrackingScreen: React.FC = () => {
@@ -76,7 +79,7 @@ export const TrackingScreen: React.FC = () => {
           </div>
         </div>
 
-        <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">
+        <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 whitespace-nowrap shrink-0">
           {activeShipment.currentStep === 9 ? 'Livré' : `Étape ${activeShipment.currentStep}/9`}
         </span>
       </div>
@@ -155,6 +158,57 @@ export const TrackingScreen: React.FC = () => {
           </div>
         </div>
 
+        {/* Maps Pickup Point & Paid Shipping Fee Info */}
+        <div className="grid grid-cols-2 gap-2 text-xs relative z-10">
+          {/* Pickup Maps Location */}
+          <div className="bg-white/5 rounded-2xl p-3 border border-white/10 space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] uppercase font-bold text-slate-300 flex items-center gap-1">
+                <MapPin size={11} className="text-emerald-400" />
+                <span>Collecte Maps</span>
+              </span>
+              {activeShipment.pickupLocation && (
+                <a
+                  href={activeShipment.pickupLocation.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:text-emerald-300"
+                  title="Voir sur Google Maps"
+                >
+                  <ExternalLink size={10} />
+                </a>
+              )}
+            </div>
+            <p className="font-bold text-white text-[11px] truncate">
+              {activeShipment.pickupLocation?.district || activeShipment.sender.address.split(',')[0]}
+            </p>
+            <p className="text-[9px] text-emerald-300/80 font-mono">
+              {activeShipment.pickupLocation
+                ? `${activeShipment.pickupLocation.lat.toFixed(4)}°, ${activeShipment.pickupLocation.lng.toFixed(4)}°`
+                : 'GPS Cotonou vérifié'}
+            </p>
+          </div>
+
+          {/* Paid Shipping Fee Badge */}
+          <div className="bg-white/5 rounded-2xl p-3 border border-white/10 space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] uppercase font-bold text-slate-300 flex items-center gap-1">
+                <Receipt size={11} className="text-emerald-400" />
+                <span>Frais réglés</span>
+              </span>
+              <span className="text-[8px] font-black uppercase bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded">
+                Acquitté
+              </span>
+            </div>
+            <p className="font-mono font-black text-emerald-400 text-sm">
+              {activeShipment.serviceFee || '5 000 FCFA'}
+            </p>
+            <p className="text-[9px] text-slate-300 truncate">
+              {activeShipment.payment?.method || 'MTN Mobile Money'}
+            </p>
+          </div>
+        </div>
+
         {/* Companion Black Courier Card */}
         <div className="bg-white/5 rounded-2xl p-3 border border-white/10 flex items-center justify-between gap-3 relative z-10">
           <div className="flex items-center gap-2.5">
@@ -186,7 +240,7 @@ export const TrackingScreen: React.FC = () => {
             <h2 className="text-sm font-black text-slate-900">Progression détaillée (9 étapes)</h2>
             <p className="text-[11px] text-slate-400">Parcours complet de bout-en-bout</p>
           </div>
-          <span className="text-[11px] font-mono font-bold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-full">
+          <span className="text-[11px] font-mono font-bold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-full whitespace-nowrap shrink-0">
             Étape {activeShipment.currentStep}/9
           </span>
         </div>
